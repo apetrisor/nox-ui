@@ -53,7 +53,7 @@
 			height: 3em
 			box-sizing: content-box
 			border-top: 1px solid $gray-300
-			.title {
+			.title
 				max-height: 100%
 				text-align: center
 				text-overflow: ellipsis

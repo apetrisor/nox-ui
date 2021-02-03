@@ -3,7 +3,7 @@
 
 	export let src;
 	export let alt;
-	export let className;
+	export let className = '';
 
 	let imageElement;
 	let loaded = false;
