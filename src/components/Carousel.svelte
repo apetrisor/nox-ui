@@ -14,17 +14,17 @@
 		let is_mobile = 'ontouchstart' in document.documentElement ? true : false;
 		let props = is_mobile
 			? {
-				draggable: true,
-				multipleDrag: true,
-				duration: 200,
-				easing: 'ease-out',
-			}
+					draggable: true,
+					multipleDrag: true,
+					duration: 200,
+					easing: 'ease-out',
+			  }
 			: {
-				draggable: false,
-				multipleDrag: false,
-				duration: 700,
-				easing: 'cubic-bezier(0.4, 0, 0, 1)',
-			};
+					draggable: false,
+					multipleDrag: false,
+					duration: 700,
+					easing: 'cubic-bezier(0.4, 0, 0, 1)',
+			  };
 
 		controller = new Siema({
 			selector: siema,
