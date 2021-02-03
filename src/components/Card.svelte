@@ -5,13 +5,14 @@
 </script>
 
 <style lang="sass">
+	@import '../styles/variables'
 	.nox-card
 		padding-top: 70%
 		position: relative
 		overflow: hidden
-		border: 1px solid #E2E8F0
+		border: 1px solid $gray-light
 		border-radius: 6px
-		transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0, 1)
+		transition: box-shadow $cubic-ease
 
 		.image
 			position: absolute
@@ -23,7 +24,7 @@
 			img, div
 				width: 100%
 				height: 100%
-				transition: transform 0.4s cubic-bezier(0.4, 0, 0, 1)
+				transition: transform $cubic-ease
 
 			img
 				object-fit: contain
@@ -34,10 +35,10 @@
 				background-repeat: no-repeat
 
 		&:hover
+			box-shadow: $shadow-big
 			.image
 				img, div
 					transform: scale3d(1.1, 1.1, 1.1)
-			@apply shadow-xl
 
 		.meta
 			background: #fff
@@ -50,7 +51,7 @@
 			line-height: 1.5em
 			height: 3em
 			box-sizing: content-box
-			border-top: 1px solid #E2E8F0
+			border-top: 1px solid $gray-light
 			.title
 				max-height: 100%
 				text-align: center
