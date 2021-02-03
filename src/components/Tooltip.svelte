@@ -9,7 +9,7 @@
 </script>
 
 <style lang="sass">
-	.tooltip
+	.nox-tooltip
 		position: relative
 		display: inline-block
 		cursor: pointer
@@ -44,7 +44,7 @@
 				transform: translate3d(-50%, 80%, 0)
 </style>
 
-<div class="tooltip">
+<div class="nox-tooltip">
 	<slot />
 	<div class="content shadow-2xl text-sm" class:top class:bottom {style}>{content}</div>
 </div>

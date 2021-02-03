@@ -5,13 +5,11 @@
 </script>
 
 <style lang="sass">
-	@import 'assets/variables';
-
 	.nox-card
 		padding-top: 70%
 		position: relative
 		overflow: hidden
-		border: 1px solid $gray-300
+		border: 1px solid #E2E8F0
 		border-radius: 6px
 		transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0, 1)
 
@@ -52,7 +50,7 @@
 			line-height: 1.5em
 			height: 3em
 			box-sizing: content-box
-			border-top: 1px solid $gray-300
+			border-top: 1px solid #E2E8F0
 			.title
 				max-height: 100%
 				text-align: center

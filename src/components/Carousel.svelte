@@ -43,42 +43,42 @@
 </script>
 
 <style lang="sass">
-	.carousel
+	.nox-carousel
 		position: relative
 		width: 100%
 		justify-content: center
 		align-items: center
 
-	button
-		position: absolute
-		width: 40px
-		height: 40px
-		top: 50%
-		z-index: 50
-		margin-top: -20px
-		border: none
-		background-color: transparent
+		button
+			position: absolute
+			width: 40px
+			height: 40px
+			top: 50%
+			z-index: 50
+			margin-top: -20px
+			border: none
+			background-color: transparent
 
-	button:focus
-		outline: none
+		button:focus
+			outline: none
 
-	.left
-		left: 2vw
+		.left
+			left: 2vw
 
-	.right
-		right: 2vw
+		.right
+			right: 2vw
 </style>
 
-<div class="carousel">
+<div class="nox-carousel">
 	<div class="slides" bind:this={siema}>
 		<slot />
 	</div>
 	{#if controls}
-		<button class="left" on:click={goLeft} aria-label="left">
-			<slot name="left-control" />
+		<button class="left" on:click={goLeft}>
+			<slot name="prev-button" />
 		</button>
-		<button class="right" on:click={goRight} aria-label="right">
-			<slot name="right-control" />
+		<button class="right" on:click={goRight}>
+			<slot name="next-button" />
 		</button>
 	{/if}
 </div>

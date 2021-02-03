@@ -22,7 +22,7 @@
 </script>
 
 <style lang="sass">
-	.sticky
+	.nox-sticky
 		display: flex
 		flex-direction: column
 		&.stuck
@@ -32,6 +32,6 @@
 
 <svelte:window bind:scrollY />
 
-<div bind:this={element} class="sticky" class:stuck style="top: {top}px">
+<div bind:this={element} class="nox-sticky" class:stuck style="top: {top}px">
 	<slot />
 </div>
