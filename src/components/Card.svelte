@@ -10,7 +10,7 @@
 		padding-top: 70%
 		position: relative
 		overflow: hidden
-		border: 1px solid $gray-light
+		border: 1px solid $gray-200
 		border-radius: 6px
 		transition: box-shadow $cubic-ease
 
@@ -51,7 +51,7 @@
 			line-height: 1.5em
 			height: 3em
 			box-sizing: content-box
-			border-top: 1px solid $gray-light
+			border-top: 1px solid $gray-200
 			.title
 				max-height: 100%
 				text-align: center
