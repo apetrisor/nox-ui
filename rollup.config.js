@@ -19,7 +19,9 @@ export default {
 	],
 	plugins: [
 		svelte({
-			preprocess: sveltePreprocess(),
+			preprocess: sveltePreprocess({
+				preserve: ['ld+json'],
+			}),
 		}),
 		resolve(),
 		commonjs(),
