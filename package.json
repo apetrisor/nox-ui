@@ -23,6 +23,11 @@
     "svelte": "^3.0.0",
     "svelte-preprocess": "^4.6.5"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/apetrisor/nox-ui.git"
+  },
+  "license": "MIT",
   "keywords": [
     "svelte"
   ],
