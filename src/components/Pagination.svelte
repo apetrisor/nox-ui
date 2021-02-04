@@ -1,5 +1,4 @@
 <script>
-	import queryString from 'query-string';
 	export let data;
 	export let path;
 	export let query;
@@ -21,12 +20,8 @@
 	$: total = data.pages;
 	$: pages = getPages(current, total);
 
-	let q;
-	$: {
-		// Make sure we remove p from the queryString as we add it manually later
-		q = queryString.stringify({...query, p: undefined});
-		if (q) q = '&' + q;
-	}
+	$: q = query.replace(/^\?/, '').replace(/&p=[0-9]+/, '');
+	$: if (q) q = '&' + q;
 </script>
 
 <style lang="sass">
