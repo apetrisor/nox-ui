@@ -20,8 +20,9 @@
 	$: total = data.pages;
 	$: pages = getPages(current, total);
 
-	$: q = query.replace(/^\?/, '').replace(/&p=[0-9]+/, '');
+	$: q = query.replace(/^\?/, '').replace(/[&]*p=[0-9]+/g, '');
 	$: if (q) q = '&' + q;
+	console.log(query, q);
 </script>
 
 <style lang="sass">
