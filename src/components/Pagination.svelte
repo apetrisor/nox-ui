@@ -22,7 +22,7 @@
 
 	$: q = query.replace(/^\?/, '').replace(/[&]*p=[0-9]+/g, '');
 	$: if (q) q = '&' + q;
-	console.log(query, q);
+	$: console.log(query, q);
 </script>
 
 <style lang="sass">
