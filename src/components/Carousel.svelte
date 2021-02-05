@@ -49,24 +49,24 @@
 		justify-content: center
 		align-items: center
 
-		button
-			position: absolute
-			width: 40px
-			height: 40px
-			top: 50%
-			z-index: 50
-			margin-top: -20px
-			border: none
-			background-color: transparent
+	button
+		position: absolute
+		width: 40px
+		height: 40px
+		top: 50%
+		z-index: 50
+		margin-top: -20px
+		border: none
+		background-color: transparent
 
-		button:focus
-			outline: none
+	button:focus
+		outline: none
 
-		.left
-			left: 2vw
+	.left
+		left: 2vw
 
-		.right
-			right: 2vw
+	.right
+		right: 2vw
 </style>
 
 <div class="nox-carousel">

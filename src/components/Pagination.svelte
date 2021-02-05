@@ -30,25 +30,24 @@
 		align-items: center
 		justify-content: center
 		margin: 50px 0
-
-		.item
-			width: 44px
-			height: 44px
-			border-radius: 50%
-			margin-right: 10px
-			display: flex
-			align-items: center
-			justify-content: center
-			transition: all 0.3s ease-out
-		.dots
-			margin-right: 10px
-		.mobile
-			@screen sm
-				display: none
-		.tablet
+	.item
+		width: 44px
+		height: 44px
+		border-radius: 50%
+		margin-right: 10px
+		display: flex
+		align-items: center
+		justify-content: center
+		transition: all 0.3s ease-out
+	.dots
+		margin-right: 10px
+	.mobile
+		@screen sm
 			display: none
-			@screen sm
-				display: flex
+	.tablet
+		display: none
+		@screen sm
+			display: flex
 </style>
 
 {#if total > 1}
