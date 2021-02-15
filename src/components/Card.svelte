@@ -14,7 +14,7 @@
 		border-radius: 6px
 		transition: box-shadow $cubic-ease
 		&:hover
-			box-shadow: $shadow-big
+			box-shadow: $shadow-xl
 			.image
 				img, div
 					transform: scale3d(1.1, 1.1, 1.1)
