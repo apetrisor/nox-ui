@@ -8,17 +8,14 @@
 	let imageElement;
 	let loaded = false;
 
-	// Whenever src changes, set loaded to false
+	// Whenever src changes, set loaded to false,
+	// this will make the image fade even if it was cached
 	$: src, (loaded = false);
 
 	onMount(() => {
 		if (imageElement) {
-			// Image might be already loaded - happens sometimes!
-			if (imageElement.complete) {
-				loaded = true;
-			} else {
-				imageElement.onload = () => (loaded = true);
-			}
+			imageElement.onload = () => (loaded = true);
+			if (imageElement.complete) loaded = true;
 		}
 	});
 </script>
