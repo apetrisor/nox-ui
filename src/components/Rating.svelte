@@ -8,13 +8,7 @@
 			structuredJSON = {
 				'@context': 'https://www.schema.org',
 				'@type': 'product',
-				...structuredData,
-				reviewCount: undefined,
-				aggregateRating: {
-					'@type': 'aggregateRating',
-					ratingValue: score,
-					reviewCount: structuredData.reviewCount || 1
-				}
+				...structuredData
 			};
 		}
 	}
