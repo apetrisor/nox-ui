@@ -57,16 +57,23 @@
 		z-index: 50
 		margin-top: -20px
 		border: none
-		background-color: transparent
+		background: rgba(255,255,255,0.5)
+		border-radius: 50%
+		padding: 5px
+		box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1)
+		transition: all 0.3s
+		&:hover
+			background: rgba(255,255,255,1)
+			box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.2)
 
 	button:focus
 		outline: none
 
 	.left
-		left: 2vw
+		left: 20px
 
 	.right
-		right: 2vw
+		right: 20px
 </style>
 
 <div class="nox-carousel">

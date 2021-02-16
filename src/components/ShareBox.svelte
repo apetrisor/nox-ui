@@ -19,8 +19,7 @@
 	a
 		width: 24px
 		height: 24px
-		margin: 10px;
-
+		margin: 10px
 </style>
 
 <div>
