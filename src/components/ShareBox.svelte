@@ -13,8 +13,6 @@
 </script>
 
 <style lang="sass">
-	.nox-share-box
-		padding: 30px
 	.buttons
 		display: flex
 		justify-content: center
@@ -25,7 +23,7 @@
 
 </style>
 
-<div class="nox-share-box">
+<div>
 	<div>Share with your friends</div>
 	<div class="buttons">
 		<a rel="nofollow" target="_blank" href={facebookLink}>

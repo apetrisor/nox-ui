@@ -22,7 +22,6 @@
 
 <style lang="sass">
 	img
-		width: 100%
 		opacity: 0
 		&.loaded
 			transition: opacity 0.7s ease-out
