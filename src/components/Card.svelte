@@ -1,13 +1,16 @@
 <script>
-	export let link;
+	import Image from './Image.svelte';
+	export let href;
 	export let title;
 	export let image;
+	export let cover = false;
+	export let prefetch = false;
 </script>
 
 <style lang="sass">
 	@import '../styles/variables'
 	.nox-card
-		padding-top: 70%
+		padding-top: 100%
 		position: relative
 		overflow: hidden
 		border: 1px solid $gray-200
@@ -16,29 +19,26 @@
 		&:hover
 			box-shadow: $shadow-xl
 			.image
-				img, div
-					transform: scale3d(1.1, 1.1, 1.1)
+				transform: scale3d(1.1, 1.1, 1.1)
 
 	.image
 		position: absolute
 		top: 0
 		bottom: 4em
 		width: 100%
-		padding: 30px
 		box-sizing: border-box
-
-		img, div
-			width: 100%
-			height: 100%
-			transition: transform $cubic-ease
-
-		img
-			object-fit: contain
+		transition: transform $cubic-ease
 
 		div
+			width: 100%
+			height: 100%
 			background-size: contain
 			background-position: center
 			background-repeat: no-repeat
+
+		&.cover
+			div
+				background-size: cover
 
 	.meta
 		background: #fff
@@ -64,11 +64,13 @@
 </style>
 
 <div class="nox-card">
-	<a href={link}>
-		<div class="image">
+	<a {href} rel={prefetch ? 'prefetch' : ''}>
+		<div class="image" class:cover>
 			{#if process.browser && 'objectFit' in document.documentElement.style === false}
 				<div style="background-image:url('{image}')" />
-			{:else}<img src={image} alt={title} />{/if}
+			{:else}
+				<Image src={image} alt={title} fit={cover ? 'cover' : 'contain'} />
+			{/if}
 		</div>
 		<div class="meta">
 			<div class="title">{title}</div>
