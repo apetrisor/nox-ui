@@ -7,9 +7,9 @@
 	export let url;
 	export let image;
 
-	let facebookLink = encodeURI(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
-	let twitterLink = encodeURI(`https://twitter.com/intent/tweet?text=${title} ${extra} ${url}`);
-	let pinterestLink = encodeURI(`http://pinterest.com/pin/create/bookmarklet/?media=${image}&url=${url}&is_video=false&description=${title}`);
+	$: facebookLink = encodeURI(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+	$: twitterLink = encodeURI(`https://twitter.com/intent/tweet?text=${title} ${extra} ${url}`);
+	$: pinterestLink = encodeURI(`http://pinterest.com/pin/create/bookmarklet/?media=${image}&url=${url}&is_video=false&description=${title}`);
 </script>
 
 <style lang="sass">
