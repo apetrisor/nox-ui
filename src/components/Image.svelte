@@ -4,6 +4,7 @@
 	export let src;
 	export let alt;
 	export let className = '';
+	export let fit;
 
 	let imageElement;
 	let loaded = false;
@@ -26,6 +27,13 @@
 		&.loaded
 			transition: opacity 0.7s ease-out
 			opacity: 1
+		&.cover, &.contain
+			width: 100%
+			height: 100%
+		&.cover
+			object-fit: cover
+		&.contain
+			object-fit: contain
 </style>
 
-<img bind:this={imageElement} class={className} class:loaded {src} {alt} />
+<img bind:this={imageElement} class={className + '' + fit} class:loaded {src} {alt} />
