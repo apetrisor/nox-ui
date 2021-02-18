@@ -5,6 +5,7 @@
 	export let image;
 	export let cover = false;
 	export let prefetch = false;
+	export let full = false;
 </script>
 
 <style lang="sass">
@@ -20,6 +21,25 @@
 			box-shadow: $shadow-xl
 			.image
 				transform: scale3d(1.1, 1.1, 1.1)
+
+		&.full
+			.image
+				bottom: 0
+			.meta
+				background: linear-gradient(0deg, rgba(0,0,0,0.6), transparent)
+				border: none
+				color: #fff
+				position: absolute
+				bottom: 0
+				left: 0
+				right: 0
+				transition: height $cubic-ease
+				font-weight: 500
+				font-size: 1.1em
+			&:hover
+				.meta
+					height: 100%
+					box-sizing: border-box
 
 	.image
 		position: absolute
@@ -61,9 +81,10 @@
 		display: -webkit-box
 		-webkit-line-clamp: 2
 		-webkit-box-orient: vertical
+
 </style>
 
-<div class="nox-card">
+<div class="nox-card" class:full>
 	<a {href} rel={prefetch ? 'prefetch' : ''}>
 		<div class="image" class:cover>
 			{#if process.browser && 'objectFit' in document.documentElement.style === false}
