@@ -6,9 +6,10 @@
 	export let extra = '';
 	export let url;
 	export let image;
+	export let hashtags;
 
 	$: facebookLink = encodeURI(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
-	$: twitterLink = encodeURI(`https://twitter.com/intent/tweet?text=${title} ${extra} ${url}`);
+	$: twitterLink = encodeURI(`https://twitter.com/intent/tweet?url=${url}&text=${title} ${extra}&hashtags=${hashtags}`);
 	$: pinterestLink = encodeURI(`http://pinterest.com/pin/create/bookmarklet/?media=${image}&url=${url}&is_video=false&description=${title}`);
 </script>
 
