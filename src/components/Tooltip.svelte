@@ -9,6 +9,7 @@
 </script>
 
 <style lang="sass">
+	@import '../styles/variables'
 	.nox-tooltip
 		position: relative
 		display: inline-block
@@ -35,6 +36,8 @@
 		text-align: center
 		border-radius: 6px
 		pointer-events: none
+		box-shadow: $shadow-2xl
+		font-size: 0.875rem
 		&.top
 			top: 0
 			left: 50%
@@ -45,5 +48,5 @@
 
 <div class="nox-tooltip">
 	<slot />
-	<div class="content shadow-2xl text-sm" class:top class:bottom {style}>{content}</div>
+	<div class="content" class:top class:bottom {style}>{content}</div>
 </div>
