@@ -14,26 +14,29 @@
 </script>
 
 <style lang="sass">
-	.buttons
-		display: flex
-		justify-content: center
-	a
-		width: 24px
-		height: 24px
-		margin: 10px
+	.nox-share-box
+		.buttons
+			display: flex
+			justify-content: center
+		a
+			width: 24px
+			height: 24px
+			margin: 10px
 </style>
 
-<div>Share with your friends</div>
-<div class="buttons">
-	<a rel="nofollow" target="_blank" href={facebookLink}>
-		<FaFacebookF />
-	</a>
-	<a rel="nofollow" target="_blank" href={twitterLink}>
-		<FaTwitter />
-	</a>
-	<a rel="nofollow" target="_blank" href={pinterestLink}>
-		<FaPinterest />
-	</a>
-	<!-- <a href="https://api.whatsapp.com/send?text=urlencodedtext" target="_blank">WA</a> -->
-	<!-- <a rel="nofollow" target="_blank" href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a> -->
+<div class="nox-share-box">
+	<div>Share with your friends</div>
+	<div class="buttons">
+		<a rel="nofollow" target="_blank" href={facebookLink}>
+			<FaFacebookF />
+		</a>
+		<a rel="nofollow" target="_blank" href={twitterLink}>
+			<FaTwitter />
+		</a>
+		<a rel="nofollow" target="_blank" href={pinterestLink}>
+			<FaPinterest />
+		</a>
+		<!-- <a href="https://api.whatsapp.com/send?text=urlencodedtext" target="_blank">WA</a> -->
+		<!-- <a rel="nofollow" target="_blank" href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a> -->
+	</div>
 </div>
