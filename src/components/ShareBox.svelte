@@ -13,18 +13,15 @@
 	$: pinterestLink = encodeURI(`http://pinterest.com/pin/create/bookmarklet/?media=${image}&url=${url}&is_video=false&description=${title}`);
 </script>
 
-<style lang="scss">
-	.nox-share-box {
-		.buttons {
-			display: flex;
-			justify-content: center;
-		}
-		a {
-			width: 24px;
-			height: 24px;
-			margin: 10px;
-		}
-	}
+<style lang="sass">
+	.nox-share-box
+		.buttons
+			display: flex
+			justify-content: center
+		a
+			width: 24px
+			height: 24px
+			margin: 10px
 </style>
 
 <div class="nox-share-box">
