@@ -28,6 +28,7 @@ export default {
 		}),
 		svelte({
 			preprocess: sveltePreprocess({
+				postcss: true,
 				preserve: ['ld+json'],
 			}),
 		}),
