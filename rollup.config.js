@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import pkg from './package.json';
 import sveltePreprocess from 'svelte-preprocess';
 import css from 'rollup-plugin-css-only';
@@ -19,6 +20,12 @@ export default {
 		{file: pkg.main, format: 'umd', name},
 	],
 	plugins: [
+		replace({
+			values: {
+				'process.browser': true,
+			},
+			preventAssignment: false,
+		}),
 		svelte({
 			preprocess: sveltePreprocess({
 				preserve: ['ld+json'],
