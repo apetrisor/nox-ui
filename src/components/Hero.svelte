@@ -2,6 +2,7 @@
 	export let bg = false;
 	export let overlay = false;
 	export let boxed = false;
+	export let bgColor;
 
 	let screenWidth = 768;
 </script>
@@ -21,6 +22,21 @@
 				height: 640px;
 			}
 		}
+		&.gray {
+			background-color: $gray-200;
+		}
+		&.pink {
+			background-color: $pink-100;
+		}
+		&.cream {
+			background-color: $cream-300;
+		}
+		&.purple {
+			background-color: $purple-200;
+		}
+		&.teal {
+			background-color: $teal-200;
+		}
 
 		.overlay {
 			position: absolute;
@@ -32,11 +48,12 @@
 			background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.15) 100%);
 		}
 
-		h1 {
+		h1,
+		h2 {
 			margin-bottom: 10px;
 		}
 
-		h2 {
+		p {
 			line-height: 1.5em;
 			margin-bottom: 20px;
 		}
@@ -66,7 +83,7 @@
 
 <svelte:window bind:innerWidth={screenWidth} />
 
-<div class="nox-hero" class:bg style={bg ? `background-image:url(${screenWidth < 768 ? bg.mobile : bg.desktop})` : null}>
+<div class="nox-hero {bgColor ? bgColor : ''}" class:bg style={bg ? `background-image:url(${screenWidth < 768 ? bg.mobile : bg.desktop})` : null}>
 	{#if overlay}<div class="overlay" />{/if}
 
 	<div class="container">
