@@ -1,5 +1,6 @@
 export {default as Card} from './components/Card.svelte';
 export {default as Carousel} from './components/Carousel.svelte';
+export {default as Header} from './components/Header.svelte';
 export {default as Hero} from './components/Hero.svelte';
 export {default as Image} from './components/Image.svelte';
 export {default as MultiSelect} from './components/MultiSelect.svelte';
