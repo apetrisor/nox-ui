@@ -1,8 +1,7 @@
 <script>
-	export let title;
-	export let subtitle;
 	export let bg = false;
 	export let overlay = false;
+	export let boxed = false;
 
 	let screenWidth = 768;
 </script>
@@ -36,15 +35,31 @@
 		h1 {
 			margin-bottom: 10px;
 		}
-		h1,
+
 		h2 {
-			padding: 0px 20px;
+			line-height: 1.5em;
+			margin-bottom: 20px;
 		}
 
-		.content {
-			margin-top: 40px;
+		.container {
 			position: relative;
 			z-index: 2;
+		}
+
+		.box {
+			background: #fff;
+			padding: 20px;
+			margin: 0px auto;
+			box-shadow: $shadow-xl;
+			max-width: 500px;
+			border-radius: 6px;
+			@include screen-md {
+				padding: 40px;
+			}
+		}
+
+		div [slot='content'] {
+			margin-top: 40px;
 		}
 	}
 </style>
@@ -52,14 +67,15 @@
 <svelte:window bind:innerWidth={screenWidth} />
 
 <div class="nox-hero" class:bg style={bg ? `background-image:url(${screenWidth < 768 ? bg.mobile : bg.desktop})` : null}>
-	{#if title}<h1>{title}</h1>{/if}
-	{#if subtitle}<h2>{subtitle}</h2>{/if}
-
 	{#if overlay}<div class="overlay" />{/if}
 
-	{#if $$slots.default}
-		<div class="content">
+	<div class="container">
+		{#if boxed}
+			<div class="box"><slot /></div>
+		{:else}
 			<slot />
-		</div>
-	{/if}
+		{/if}
+
+		<slot name="content" />
+	</div>
 </div>
