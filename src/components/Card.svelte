@@ -26,22 +26,27 @@
 			.image
 				bottom: 0
 			.meta
-				background: linear-gradient(0deg, rgba(0,0,0,0.6), transparent)
+				background: linear-gradient(0deg, rgba(0,0,0,0.7), rgba(0,0,0,0))
 				border: none
 				color: #fff
 				position: absolute
 				bottom: 0
 				left: 0
 				right: 0
-				transition: height $cubic-ease
+				transition: height 0.4s, background 0.4s
 				font-weight: 500
 				font-size: 1.1em
+				paddaing: 0.5em
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7)
 			&:hover
+				box-shadow: none
 				.meta
 					height: 100%
+					background: rgba(0,0,0,0.3)
 					box-sizing: border-box
 
 	.image
+		background: #fff
 		position: absolute
 		top: 0
 		bottom: 4em
