@@ -1,4 +1,6 @@
 <style lang="scss" global>
+	@import '../styles/variables';
+
 	.nox-header {
 		padding: 50px 0;
 		display: flex;
@@ -11,7 +13,7 @@
 		h1 {
 			letter-spacing: 0.025em;
 			font-size: 1.75rem;
-			@screen md {
+			@include screen-sm {
 				font-size: 2.25rem;
 			}
 		}
@@ -25,7 +27,7 @@
 			width: 100%;
 			object-fit: cover;
 		}
-		@screen lg {
+		@include screen-lg {
 			flex-wrap: nowrap;
 			> div {
 				width: 48%;

@@ -21,13 +21,16 @@
 	});
 </script>
 
-<style lang="sass">
-	.nox-sticky
-		display: flex
-		flex-direction: column
-		&.stuck
-			@media (min-width: 1024px)
-				position: sticky
+<style lang="scss" global>
+	.nox-sticky {
+		display: flex;
+		flex-direction: column;
+		&.stuck {
+			@media (min-width: 1024px) {
+				position: sticky;
+			}
+		}
+	}
 </style>
 
 <svelte:window bind:scrollY />

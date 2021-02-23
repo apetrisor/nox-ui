@@ -22,19 +22,20 @@
 	};
 </script>
 
-<style lang="sass">
-	select
-		opacity: 0
-		position: absolute
-		top: 0
-		bottom: 0
-		left: 0
-		right: 0
-		width: 100%
-		z-index: 10
-		cursor: pointer
-		outline: none
-		appearance: none
+<style lang="scss">
+	select {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		z-index: 10;
+		cursor: pointer;
+		outline: none;
+		appearance: none;
+	}
 </style>
 
 <select value={selectedOption} on:change={handleChange}>

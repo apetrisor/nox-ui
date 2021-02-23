@@ -42,38 +42,44 @@
 	const goRight = () => controller.next(controller.perPage);
 </script>
 
-<style lang="sass">
-	.nox-carousel
-		position: relative
-		width: 100%
-		justify-content: center
-		align-items: center
+<style lang="scss" global>
+	.nox-carousel {
+		position: relative;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
 
-	button
-		position: absolute
-		width: 40px
-		height: 40px
-		top: 50%
-		z-index: 50
-		margin-top: -20px
-		border: none
-		background: rgba(255,255,255,0.5)
-		border-radius: 50%
-		padding: 5px
-		box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1)
-		transition: all 0.3s
-		&:hover
-			background: rgba(255,255,255,1)
-			box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.2)
+		button {
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			top: 50%;
+			z-index: 50;
+			margin-top: -20px;
+			border: none;
+			background: rgba(255, 255, 255, 0.5);
+			border-radius: 50%;
+			padding: 5px;
+			box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s;
+			&:hover {
+				background: rgba(255, 255, 255, 1);
+				box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
+			}
+		}
 
-	button:focus
-		outline: none
+		button:focus {
+			outline: none;
+		}
 
-	.left
-		left: 20px
+		.left {
+			left: 20px;
+		}
 
-	.right
-		right: 20px
+		.right {
+			right: 20px;
+		}
+	}
 </style>
 
 <div class="nox-carousel">
