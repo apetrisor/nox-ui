@@ -4,11 +4,11 @@
 	import {createEventDispatcher} from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	export let value;
-	export let small;
+	export let value = '';
+	export let small = false;
 
 	const handleClear = () => (value = '');
-	const handleSubmit = () => dispatch('submit', value);
+	const handleSubmit = () => dispatch('search', value);
 </script>
 
 <style lang="scss" global>
@@ -38,7 +38,7 @@
 		&.small {
 			button {
 				width: 44px;
-				padding: 12px;
+				padding: 13px;
 			}
 			input {
 				font-size: 16px;

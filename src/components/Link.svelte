@@ -3,7 +3,7 @@
 	export let external = false;
 	export let scroll = false;
 
-	let className;
+	let className = '';
 	export {className as class};
 
 	const doScroll = e => {
