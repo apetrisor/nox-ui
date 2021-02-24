@@ -7,6 +7,7 @@
 	export let submenu;
 	export let path;
 	export let query;
+	export let placeholder;
 
 	let mobileMenuOpen = false;
 	// When page or query update, close menus
@@ -37,9 +38,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			> div {
-				flex: 1;
-			}
+
 			.menu-button {
 				width: 44px;
 				height: 44px;
@@ -58,14 +57,8 @@
 		.search-bar {
 			display: none;
 			@include screen-md {
-				display: block;
-			}
-		}
-
-		.sidemenu {
-			display: none;
-			@include screen-md {
-				display: block;
+				display: flex;
+				justify-content: flex-end;
 			}
 		}
 
@@ -111,10 +104,8 @@
 			</div>
 
 			<div class="search-bar">
-				<SearchBar small stretch on:search />
+				<SearchBar small stretch {placeholder} on:search />
 			</div>
-
-			<div class="sidemenu" />
 
 			<button class="menu-button" on:click={toggleMobileMenu} type="button">
 				{#if mobileMenuOpen}

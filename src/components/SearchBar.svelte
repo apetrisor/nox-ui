@@ -6,9 +6,15 @@
 
 	export let value = '';
 	export let small = false;
+	export let stretch = false;
+	export let placeholder = 'search';
 
 	const handleClear = () => (value = '');
 	const handleSubmit = () => dispatch('search', value);
+
+	let focused = false;
+	const handleFocus = () => (focused = true);
+	const handleBlur = () => (focused = false);
 </script>
 
 <style lang="scss" global>
@@ -21,6 +27,15 @@
 		background: $gray-200;
 		border-radius: 8px;
 		border: 1px solid transparent;
+		transition: width $cubic-ease;
+
+		&.stretch {
+			width: 200px;
+			max-width: 100%;
+			&.focused {
+				width: 400px;
+			}
+		}
 
 		button {
 			width: 60px;
@@ -47,11 +62,11 @@
 	}
 </style>
 
-<form class="nox-search-bar" class:small on:submit|preventDefault={handleSubmit}>
-	<button type="submit" title="Search Undissimo">
+<form class="nox-search-bar" class:focused class:small class:stretch on:submit|preventDefault={handleSubmit}>
+	<button type="submit" title={placeholder}>
 		<SearchIcon />
 	</button>
-	<input placeholder="Search underwear" bind:value />
+	<input {placeholder} bind:value on:focus={handleFocus} on:blur={handleBlur} />
 	{#if value}
 		<button title="Clear Search" on:click={handleClear}>
 			<XIcon />
