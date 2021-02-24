@@ -5,6 +5,7 @@ export {default as Hero} from './components/Hero.svelte';
 export {default as Image} from './components/Image.svelte';
 export {default as Link} from './components/Link.svelte';
 export {default as MultiSelect} from './components/MultiSelect.svelte';
+export {default as NavBar} from './components/NavBar.svelte';
 export {default as Pagination} from './components/Pagination.svelte';
 export {default as Rating} from './components/Rating.svelte';
 export {default as SearchBar} from './components/SearchBar.svelte';
