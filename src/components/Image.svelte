@@ -3,8 +3,7 @@
 
 	export let src;
 	export let alt;
-	export let className = '';
-	export let fit;
+	export let fit = '';
 
 	let imageElement;
 	let loaded = false;
@@ -42,4 +41,4 @@
 	}
 </style>
 
-<img bind:this={imageElement} class={className + '' + fit} class:loaded {src} {alt} />
+<img bind:this={imageElement} class:cover={fit === 'cover'} class:contain={fit === 'contain'} class:loaded {src} {alt} />
