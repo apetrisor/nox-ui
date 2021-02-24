@@ -18,7 +18,10 @@
 			background-size: cover;
 			background-position: center;
 			height: 400px;
-			@media (min-width: 768px) {
+			@include screen-sm {
+				height: 520px;
+			}
+			@include screen-md {
 				height: 640px;
 			}
 		}

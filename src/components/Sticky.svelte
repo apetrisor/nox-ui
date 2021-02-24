@@ -22,11 +22,13 @@
 </script>
 
 <style lang="scss" global>
+	@import '../styles/variables';
+
 	.nox-sticky {
 		display: flex;
 		flex-direction: column;
 		&.stuck {
-			@media (min-width: 1024px) {
+			@include screen-lg {
 				position: sticky;
 			}
 		}
