@@ -2,7 +2,7 @@
 	export let bg = false;
 	export let overlay = false;
 	export let boxed = false;
-	export let bgColor;
+	export let bgColor = false;
 
 	let screenWidth = 768;
 </script>
