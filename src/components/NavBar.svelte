@@ -127,7 +127,7 @@
 		{#if mobileMenuOpen}
 			<div transition:fly={{y: -20}} class="mobile-menu">
 				<div class="container">
-					<SearchBar on:search />
+					<SearchBar on:search {placeholder} />
 					<div class="submenu">
 						{#each submenu as page}
 							<a href={page.path} class:active={page.path === path}>{page.name}</a>

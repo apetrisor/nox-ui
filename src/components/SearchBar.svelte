@@ -24,10 +24,13 @@
 		width: 100%;
 		display: flex;
 		color: $gray-700;
-		background: $gray-200;
+		background: #fff;
 		border-radius: 8px;
-		border: 1px solid transparent;
-		transition: width $cubic-ease;
+		border: 1px solid $gray-400;
+		transition: all $cubic-ease;
+		&.focused {
+			background: $gray-200;
+		}
 
 		&.stretch {
 			width: 200px;
