@@ -9,6 +9,9 @@
 		flex-wrap: wrap;
 		> div {
 			width: 100%;
+			&:first-child {
+				margin-bottom: 30px;
+			}
 		}
 		h1 {
 			letter-spacing: 0.025em;
@@ -18,9 +21,11 @@
 			}
 		}
 		p {
-			font-size: 0.875rem;
-			margin-bottom: 30px;
+			margin-bottom: 20px;
 			white-space: pre-wrap;
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 		img {
 			max-height: 300px;
@@ -31,9 +36,9 @@
 			flex-wrap: nowrap;
 			> div {
 				width: 48%;
-			}
-			p {
-				margin-bottom: 0;
+				&:first-child {
+					margin-bottom: 0;
+				}
 			}
 		}
 	}
