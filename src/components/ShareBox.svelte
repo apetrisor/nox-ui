@@ -1,4 +1,5 @@
 <script>
+	import Link from './Link.svelte';
 	import FaPinterest from 'svelte-icons/fa/FaPinterest.svelte';
 	import FaFacebookF from 'svelte-icons/fa/FaFacebookF.svelte';
 	import FaTwitter from 'svelte-icons/fa/FaTwitter.svelte';
@@ -30,15 +31,15 @@
 <div class="nox-share-box">
 	<div>Share with your friends</div>
 	<div class="buttons">
-		<a rel="nofollow" target="_blank" href={facebookLink}>
+		<Link external href={facebookLink}>
 			<FaFacebookF />
-		</a>
-		<a rel="nofollow" target="_blank" href={twitterLink}>
+		</Link>
+		<Link external href={twitterLink}>
 			<FaTwitter />
-		</a>
-		<a rel="nofollow" target="_blank" href={pinterestLink}>
+		</Link>
+		<Link external href={pinterestLink}>
 			<FaPinterest />
-		</a>
+		</Link>
 		<!-- <a href="https://api.whatsapp.com/send?text=urlencodedtext" target="_blank">WA</a> -->
 		<!-- <a rel="nofollow" target="_blank" href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a> -->
 	</div>
