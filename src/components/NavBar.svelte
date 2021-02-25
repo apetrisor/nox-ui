@@ -154,7 +154,7 @@
 				</div>
 
 				<div class="search-bar">
-					<SearchBar small stretch {placeholder} on:search />
+					<SearchBar small stretch {placeholder} value={query.q} on:search />
 				</div>
 
 				<button class="menu-button" on:click={toggleMobileMenu} type="button">
@@ -181,7 +181,7 @@
 	{#if mobileMenuOpen}
 		<div transition:fly={{y: -20}} class="mobile-menu">
 			<div class="container">
-				<SearchBar on:search {placeholder} />
+				<SearchBar on:search {placeholder} value={query.q} />
 				<div class="submenu">
 					{#each submenu as page}
 						<a href={page.path} class:active={page.path === path}>{page.name}</a>
