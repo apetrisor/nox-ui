@@ -16,7 +16,7 @@
 		h1 {
 			letter-spacing: 0.025em;
 			font-size: 1.75rem;
-			@include screen-sm {
+			@screen sm {
 				font-size: 2.25rem;
 			}
 		}
@@ -32,7 +32,7 @@
 			width: 100%;
 			object-fit: cover;
 		}
-		@include screen-lg {
+		@screen lg {
 			flex-wrap: nowrap;
 			> div {
 				width: 48%;

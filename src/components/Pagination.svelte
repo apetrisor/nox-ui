@@ -46,13 +46,13 @@
 			margin-right: 10px;
 		}
 		.mobile {
-			@include screen-sm {
+			@screen sm {
 				display: none;
 			}
 		}
 		.tablet {
 			display: none;
-			@include screen-sm {
+			@screen sm {
 				display: flex;
 			}
 		}

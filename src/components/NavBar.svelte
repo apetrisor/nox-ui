@@ -58,7 +58,7 @@
 				}
 			}
 
-			@include screen-md {
+			@screen md {
 				height: 104px;
 				.inner {
 					height: 104px;
@@ -71,7 +71,7 @@
 
 		[slot='logo'] {
 			height: 24px;
-			@include screen-md {
+			@screen md {
 				height: 26px;
 			}
 		}
@@ -89,7 +89,7 @@
 				padding: 10px;
 				margin-right: -10px;
 			}
-			@include screen-md {
+			@screen md {
 				padding: 13px 0;
 				.menu-button {
 					display: none;
@@ -99,7 +99,7 @@
 
 		.search-bar {
 			display: none;
-			@include screen-md {
+			@screen md {
 				display: block;
 			}
 		}
@@ -107,7 +107,7 @@
 		.submenu {
 			display: none;
 			margin-bottom: 15px;
-			@include screen-md {
+			@screen md {
 				display: block;
 			}
 			.container {
@@ -126,7 +126,7 @@
 			overflow-y: scroll;
 			background: #fff;
 			padding: 20px 0;
-			@include screen-md {
+			@screen md {
 				display: none;
 			}
 			.submenu {

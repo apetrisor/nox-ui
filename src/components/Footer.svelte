@@ -26,14 +26,14 @@
 			&:last-child {
 				margin-bottom: 0;
 			}
-			@include screen-lg {
+			@screen lg {
 				margin-bottom: 0;
 			}
 			> div {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				@include screen-lg {
+				@screen lg {
 					align-items: flex-start;
 				}
 			}

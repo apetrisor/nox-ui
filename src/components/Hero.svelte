@@ -18,10 +18,10 @@
 			background-size: cover;
 			background-position: center;
 			height: 400px;
-			@include screen-sm {
+			@screen sm {
 				height: 520px;
 			}
-			@include screen-md {
+			@screen md {
 				height: 640px;
 			}
 		}
@@ -73,7 +73,7 @@
 			box-shadow: $shadow-xl;
 			max-width: 500px;
 			border-radius: 6px;
-			@include screen-md {
+			@screen md {
 				padding: 40px;
 			}
 		}
