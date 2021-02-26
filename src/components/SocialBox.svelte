@@ -9,7 +9,7 @@
 </script>
 
 <style lang="scss" global>
-	@import '../styles/variables';
+	@import '../assets/variables';
 
 	.nox-social-box {
 		.buttons {
@@ -21,7 +21,6 @@
 			width: 36px;
 			height: 36px;
 			margin-right: 20px;
-			color: $gray-700;
 			&:last-child {
 				margin-right: 0;
 			}

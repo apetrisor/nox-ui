@@ -1,5 +1,5 @@
 <style lang="scss" global>
-	@import '../styles/variables';
+	@import '../assets/variables';
 
 	.nox-header {
 		padding: 50px 0;

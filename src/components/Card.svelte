@@ -9,7 +9,7 @@
 </script>
 
 <style lang="scss" global>
-	@import '../styles/variables';
+	@import '../assets/variables';
 
 	.nox-card {
 		padding-top: 100%;

@@ -18,7 +18,7 @@
 </script>
 
 <style lang="scss" global>
-	@import '../styles/variables';
+	@import '../assets/variables';
 
 	.nox-search-bar {
 		width: 100%;

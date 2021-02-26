@@ -9,7 +9,7 @@
 </script>
 
 <style lang="scss" global>
-	@import '../styles/variables';
+	@import '../assets/variables';
 
 	.nox-tooltip {
 		position: relative;
