@@ -5,7 +5,7 @@
 	const dispatch = createEventDispatcher();
 
 	export let value = '';
-	export let small = false;
+	export let size = 'normal';
 	export let stretch = false;
 	export let placeholder = 'search';
 
@@ -41,31 +41,40 @@
 		}
 
 		button {
-			width: 60px;
-			padding: 18px;
+			width: 44px;
+			padding: 13px;
 			flex-shrink: 0;
 		}
 
 		input {
-			padding: 10px 0;
 			width: 100%;
 			background: none;
-			font-size: 18px;
+			font-size: 16px;
 		}
 
-		&.small {
+		&.tiny {
 			button {
-				width: 44px;
-				padding: 13px;
+				width: 36px;
+				padding: 9px;
 			}
 			input {
-				font-size: 16px;
+				font-size: 15px;
+			}
+		}
+
+		&.big {
+			button {
+				width: 60px;
+				padding: 18px;
+			}
+			input {
+				font-size: 18px;
 			}
 		}
 	}
 </style>
 
-<form class="nox-search-bar" class:focused class:small class:stretch on:submit|preventDefault={handleSubmit}>
+<form class="nox-search-bar" class:focused class:stretch class:tiny={size === 'tiny'} class:big={size === 'big'} on:submit|preventDefault={handleSubmit}>
 	<button type="submit" title={placeholder}>
 		<SearchIcon />
 	</button>

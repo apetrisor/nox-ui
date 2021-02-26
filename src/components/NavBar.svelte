@@ -59,20 +59,20 @@
 			}
 
 			@include screen-md {
-				height: 115px;
+				height: 104px;
 				.inner {
-					height: 115px;
+					height: 104px;
 				}
 				&.stuck .inner {
-					height: 74px;
+					height: 64px;
 				}
 			}
 		}
 
 		[slot='logo'] {
-			height: 36px;
+			height: 24px;
 			@include screen-md {
-				height: 40px;
+				height: 26px;
 			}
 		}
 
@@ -90,7 +90,7 @@
 				margin-right: -10px;
 			}
 			@include screen-md {
-				padding: 15px 0;
+				padding: 13px 0;
 				.menu-button {
 					display: none;
 				}
@@ -100,8 +100,7 @@
 		.search-bar {
 			display: none;
 			@include screen-md {
-				display: flex;
-				justify-content: flex-end;
+				display: block;
 			}
 		}
 
@@ -133,6 +132,7 @@
 			.submenu {
 				display: flex;
 				flex-direction: column;
+				margin-top: 20px;
 				a {
 					padding: 20px;
 					font-size: 1.1rem;
@@ -154,7 +154,7 @@
 				</div>
 
 				<div class="search-bar">
-					<SearchBar small stretch {placeholder} value={query.q} on:search />
+					<SearchBar size="tiny" stretch {placeholder} value={query.q} on:search />
 				</div>
 
 				<button class="menu-button" on:click={toggleMobileMenu} type="button">
@@ -181,7 +181,7 @@
 	{#if mobileMenuOpen}
 		<div transition:fly={{y: -20}} class="mobile-menu">
 			<div class="container">
-				<SearchBar on:search {placeholder} value={query.q} />
+				<SearchBar size="big" on:search {placeholder} value={query.q} />
 				<div class="submenu">
 					{#each submenu as page}
 						<a href={page.path} class:active={page.path === path}>{page.name}</a>
