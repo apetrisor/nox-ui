@@ -1,4 +1,7 @@
 <script>
+	import ChevronLeftIcon from 'svelte-feather-icons/src/icons/ChevronLeftIcon.svelte';
+	import ChevronRightIcon from 'svelte-feather-icons/src/icons/ChevronRightIcon.svelte';
+
 	export let data;
 	export let path;
 	export let query;
@@ -35,6 +38,7 @@
 		.item {
 			width: 44px;
 			height: 44px;
+			padding: 10px;
 			border-radius: 50%;
 			margin-right: 10px;
 			display: flex;
@@ -63,7 +67,9 @@
 	<div class="nox-pagination">
 		{#if current > 1}
 			<a class="item prev" href="{path}?p={current - 1}{q}">
-				<slot name="prev-button" />
+				<slot name="prev-button">
+					<ChevronLeftIcon />
+				</slot>
 			</a>
 		{/if}
 		{#each pages as page}
@@ -77,7 +83,9 @@
 		{/each}
 		{#if current < total}
 			<a class="item next" href="{path}?p={current + 1}{q}">
-				<slot name="next-button" />
+				<slot name="next-button">
+					<ChevronRightIcon />
+				</slot>
 			</a>
 		{/if}
 	</div>
