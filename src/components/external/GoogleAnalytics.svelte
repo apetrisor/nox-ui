@@ -5,7 +5,9 @@
 
 	let loaded = false;
 
-	const gtag = () => window.dataLayer.push(arguments);
+	function gtag() {
+		window.dataLayer.push(arguments);
+	}
 
 	onMount(() => {
 		window.dataLayer = window.dataLayer || [];
