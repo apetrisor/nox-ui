@@ -5,7 +5,7 @@
 	import FaPinterest from 'svelte-icons/fa/FaPinterest.svelte';
 	import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte';
 
-	export let links;
+	export let links = {};
 </script>
 
 <style lang="scss" global>
