@@ -1,10 +1,12 @@
 <script>
+	import Image from './Image.svelte';
 	export let bg = false;
 	export let overlay = false;
 	export let boxed = false;
 	export let bgColor = false;
 
-	let screenWidth = 768;
+	let className = '';
+	export {className as class};
 </script>
 
 <style lang="scss" global>
@@ -15,9 +17,25 @@
 		text-align: center;
 		padding: 80px 0px;
 		&.bg {
-			background-size: cover;
-			background-position: center;
 			height: 400px;
+			overflow: hidden;
+			.bg-image {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				div {
+					width: 100%;
+					height: 100%;
+					background-size: cover;
+					background-position: center;
+					background-repeat: no-repeat;
+				}
+			}
+
 			@screen sm {
 				height: 520px;
 			}
@@ -84,11 +102,24 @@
 	}
 </style>
 
-<svelte:window bind:innerWidth={screenWidth} />
-
-<div class="nox-hero {bgColor ? bgColor : ''}" class:bg style={bg ? `background-image:url(${screenWidth < 768 ? bg.mobile : bg.desktop})` : null}>
+<div class="nox-hero {className} {bgColor ? bgColor : ''}" class:bg>
 	{#if overlay}<div class="overlay" />{/if}
-
+	{#if bg}
+		<div class="bg-image hidden lg:block">
+			{#if process.browser && 'objectFit' in document.documentElement.style === false}
+				<div style="background-image:url('{bg.desktop || bg.mobile}')" />
+			{:else}
+				<Image slow fit="cover" src={bg.desktop || bg.mobile} />
+			{/if}
+		</div>
+		<div class="bg-image lg:hidden">
+			{#if process.browser && 'objectFit' in document.documentElement.style === false}
+				<div style="background-image:url('{bg.mobile || bg.desktop}')" />
+			{:else}
+				<Image slow fit="cover" src={bg.mobile || bg.desktop} />
+			{/if}
+		</div>
+	{/if}
 	<div class="container">
 		{#if boxed}
 			<div class="box"><slot /></div>

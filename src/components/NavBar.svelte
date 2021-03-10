@@ -26,11 +26,11 @@
 	@import '../assets/variables';
 
 	.nox-navbar {
-		background: #fff;
 		transition: all 0.3s;
 		position: relative;
 		.inner {
 			border-bottom: 1px solid $gray-200;
+			background: #fff;
 		}
 
 		&.sticky {
@@ -41,7 +41,6 @@
 				width: 100%;
 				top: 0px;
 				z-index: 1000;
-				background: #fff;
 				transition: height 0.3s, box-shadow 0.3s;
 				.submenu {
 					transition: all 0.3s;
