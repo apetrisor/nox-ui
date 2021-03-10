@@ -4,6 +4,7 @@
 	export let src;
 	export let alt;
 	export let fit = '';
+	export let slow = false;
 
 	let imageElement;
 	let loaded = false;
@@ -26,6 +27,9 @@
 		&.loaded {
 			transition: opacity 0.7s ease-out;
 			opacity: 1;
+			&.slow {
+				transition: opacity 2s ease-out 1s;
+			}
 		}
 		&.cover,
 		&.contain {
@@ -41,4 +45,4 @@
 	}
 </style>
 
-<img bind:this={imageElement} class:cover={fit === 'cover'} class:contain={fit === 'contain'} class:loaded {src} {alt} />
+<img bind:this={imageElement} class:cover={fit === 'cover'} class:contain={fit === 'contain'} class:loaded class:slow {src} {alt} />
