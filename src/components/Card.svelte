@@ -40,7 +40,7 @@
 				transition: height 0.4s, background 0.4s;
 				font-weight: 500;
 				font-size: 1.1em;
-				paddaing: 0.5em;
+				padding: 0.5em;
 				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 			}
 			&:hover {
