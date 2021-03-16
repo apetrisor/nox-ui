@@ -3,7 +3,7 @@
 	export let href;
 	export let title;
 	export let image;
-	export let cover = false;
+	export let fit = 'contain';
 	export let prefetch = false;
 	export let full = false;
 </script>
@@ -92,7 +92,7 @@
 <div class="nox-card" class:full>
 	<a {href} rel={prefetch ? 'prefetch' : ''}>
 		<div class="image">
-			<Image src={image} alt={title} fit={cover ? 'cover' : 'contain'} />
+			<Image src={image} alt={title} {fit} />
 		</div>
 		<div class="meta">
 			<div class="title">{title}</div>

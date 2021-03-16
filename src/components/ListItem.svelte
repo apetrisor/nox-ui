@@ -3,7 +3,7 @@
 	export let title;
 	export let href;
 	export let image;
-	export let cover = false;
+	export let fit = 'contain';
 </script>
 
 <style lang="scss" global>
@@ -41,7 +41,7 @@
 <div class="nox-list-item">
 	<a {href}>
 		<div class="image">
-			<Image src={image} alt={title} fit={cover ? 'cover' : 'contain'} />
+			<Image src={image} alt={title} {fit} />
 		</div>
 		<div class="item-info">
 			<div class="item-title">{title}</div>
