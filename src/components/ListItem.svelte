@@ -29,17 +29,6 @@
 			border-radius: 6px;
 			flex-shrink: 0;
 			overflow: hidden;
-			div {
-				width: 100%;
-				height: 100%;
-				background-size: contain;
-				background-position: center;
-				background-repeat: no-repeat;
-			}
-
-			&.cover div {
-				background-size: cover;
-			}
 		}
 		.item-info {
 			display: flex;
@@ -52,11 +41,7 @@
 <div class="nox-list-item">
 	<a {href}>
 		<div class="image">
-			{#if process.browser && 'objectFit' in document.documentElement.style === false}
-				<div style="background-image:url('{image}')" />
-			{:else}
-				<Image src={image} alt={title} fit={cover ? 'cover' : 'contain'} />
-			{/if}
+			<Image src={image} alt={title} fit={cover ? 'cover' : 'contain'} />
 		</div>
 		<div class="item-info">
 			<div class="item-title">{title}</div>

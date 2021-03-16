@@ -27,13 +27,6 @@
 				right: 0;
 				width: 100%;
 				height: 100%;
-				div {
-					width: 100%;
-					height: 100%;
-					background-size: cover;
-					background-position: center;
-					background-repeat: no-repeat;
-				}
 			}
 
 			@screen sm {
@@ -106,18 +99,10 @@
 	{#if overlay}<div class="overlay" />{/if}
 	{#if bg}
 		<div class="bg-image hidden lg:block">
-			{#if process.browser && 'objectFit' in document.documentElement.style === false}
-				<div style="background-image:url('{bg.desktop || bg.mobile}')" />
-			{:else}
-				<Image slow fit="cover" src={bg.desktop || bg.mobile} />
-			{/if}
+			<Image slow fit="cover" src={bg.desktop || bg.mobile} />
 		</div>
 		<div class="bg-image lg:hidden">
-			{#if process.browser && 'objectFit' in document.documentElement.style === false}
-				<div style="background-image:url('{bg.mobile || bg.desktop}')" />
-			{:else}
-				<Image slow fit="cover" src={bg.mobile || bg.desktop} />
-			{/if}
+			<Image slow fit="cover" src={bg.mobile || bg.desktop} />
 		</div>
 	{/if}
 	<div class="container">

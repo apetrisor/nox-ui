@@ -61,18 +61,6 @@
 			width: 100%;
 			box-sizing: border-box;
 			transition: transform $cubic-ease;
-
-			div {
-				width: 100%;
-				height: 100%;
-				background-size: contain;
-				background-position: center;
-				background-repeat: no-repeat;
-			}
-
-			&.cover div {
-				background-size: cover;
-			}
 		}
 
 		.meta {
@@ -103,12 +91,8 @@
 
 <div class="nox-card" class:full>
 	<a {href} rel={prefetch ? 'prefetch' : ''}>
-		<div class="image" class:cover>
-			{#if process.browser && 'objectFit' in document.documentElement.style === false}
-				<div style="background-image:url('{image}')" />
-			{:else}
-				<Image src={image} alt={title} fit={cover ? 'cover' : 'contain'} />
-			{/if}
+		<div class="image">
+			<Image src={image} alt={title} fit={cover ? 'cover' : 'contain'} />
 		</div>
 		<div class="meta">
 			<div class="title">{title}</div>
