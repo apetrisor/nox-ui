@@ -1,6 +1,6 @@
 {
   "name": "@apetrisor/nox-ui",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "NOX (Node on Xanax) Svelte UI Library",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
