@@ -1,6 +1,7 @@
 export {default as Card} from './components/Card.svelte';
 export {default as Carousel} from './components/Carousel.svelte';
 export {default as Check} from './components/Check.svelte';
+export {default as CheckBox} from './components/CheckBox.svelte';
 export {default as Columns} from './components/Columns.svelte';
 export {default as Footer} from './components/Footer.svelte';
 export {default as GoogleAnalytics} from './components/external/GoogleAnalytics.svelte';
