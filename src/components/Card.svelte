@@ -12,7 +12,6 @@
 	@import '../assets/variables';
 
 	.nox-card {
-		padding-top: 100%;
 		position: relative;
 		overflow: hidden;
 		border: 1px solid $gray-200;
@@ -53,12 +52,18 @@
 			}
 		}
 
+		.image-wrapper {
+			position: relative;
+			padding-top: 100%;
+			overflow: hidden;
+		}
+
 		.image {
 			background: #fff;
 			position: absolute;
 			top: 0;
-			bottom: 4em;
 			width: 100%;
+			height: 100%;
 			box-sizing: border-box;
 			transition: transform $cubic-ease;
 		}
@@ -66,15 +71,17 @@
 		.meta {
 			background: #fff;
 			padding: 0.5em;
-			z-index: 20;
-			position: relative;
+			line-height: 1.5em;
+			box-sizing: content-box;
+			border-top: 1px solid $gray-200;
+		}
+
+		.title-wrapper {
+			height: 3em;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			line-height: 1.5em;
-			height: 3em;
 			box-sizing: content-box;
-			border-top: 1px solid $gray-200;
 		}
 
 		.title {
@@ -90,12 +97,19 @@
 </style>
 
 <div class="nox-card" class:full>
-	<a {href} rel={prefetch ? 'prefetch' : ''}>
-		<div class="image">
-			<Image src={image} alt={title} {fit} />
-		</div>
-		<div class="meta">
-			<div class="title">{title}</div>
-		</div>
-	</a>
+	<div class="image-wrapper">
+		<a {href} rel={prefetch ? 'prefetch' : ''}>
+			<div class="image">
+				<Image src={image} alt={title} {fit} />
+			</div>
+		</a>
+	</div>
+	<div class="meta">
+		<a {href} rel={prefetch ? 'prefetch' : ''}>
+			<div class="title-wrapper">
+				<div class="title">{title}</div>
+			</div>
+		</a>
+		<slot />
+	</div>
 </div>
