@@ -34,7 +34,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin: 50px 0;
+		margin-top: 50px;
 		.item {
 			width: 44px;
 			height: 44px;
@@ -79,7 +79,11 @@
 				<span class="dots">...</span>
 			{:else if page === current}
 				<span class="item current">{page}</span>
-			{:else if page !== 1 && page !== total}<a class="item tablet" href="{path}?p={page}{q}">{page}</a>{:else}<a class="item" href="{path}?p={page}{q}">{page}</a>{/if}
+			{:else if page !== 1 && page !== total}
+				<a class="item tablet" href="{path}?p={page}{q}">{page}</a>
+			{:else}
+				<a class="item" href="{path}?p={page}{q}">{page}</a>
+			{/if}
 		{/each}
 		{#if current < total}
 			<a class="item next" href="{path}?p={current + 1}{q}">
