@@ -19,6 +19,7 @@
 	.nox-check-box {
 		cursor: pointer;
 		display: inline-flex;
+		flex-wrap: wrap;
 		align-items: center;
 		.box {
 			background: #fff;

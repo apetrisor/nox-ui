@@ -14,8 +14,9 @@
 
 	.nox-select {
 		display: inline-flex;
+		flex-wrap: wrap;
 		align-items: center;
-		label {
+		span {
 			margin-right: 10px;
 		}
 
@@ -57,7 +58,7 @@
 
 <div class="nox-select">
 	{#if label}
-		<label>{label}</label>
+		<span>{label}</span>
 	{/if}
 	<div class="box">
 		<div>{optionsHash[value]}</div>
