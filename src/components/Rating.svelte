@@ -25,7 +25,7 @@
 		border: 1px solid $gray-400;
 		border-radius: 8px;
 		padding: 15px 20px;
-		color: #ffbe00;
+		color: $yellow-500;
 
 		.title {
 			color: $gray-500;

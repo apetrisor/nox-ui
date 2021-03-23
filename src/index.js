@@ -15,6 +15,7 @@ export {default as MultiSelect} from './components/MultiSelect.svelte';
 export {default as NavBar} from './components/NavBar.svelte';
 export {default as Pagination} from './components/Pagination.svelte';
 export {default as Rating} from './components/Rating.svelte';
+export {default as RatingBadge} from './components/RatingBadge.svelte';
 export {default as SearchBar} from './components/SearchBar.svelte';
 export {default as Select} from './components/Select.svelte';
 export {default as ShareBox} from './components/ShareBox.svelte';
