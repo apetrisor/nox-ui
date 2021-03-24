@@ -10,7 +10,7 @@
 		title += ` - Page ${pagination.page}`;
 		description = `Page ${pagination.page} of ${pagination.pages} - ${description}`;
 	}
-	$: if (queryString) queryString = '&' + queryString;
+	$: if (queryString) queryString = '&' + encodeURI(queryString);
 </script>
 
 <svelte:head>
