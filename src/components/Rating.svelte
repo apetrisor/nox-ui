@@ -1,6 +1,6 @@
 <script>
 	export let score;
-	export let structuredData;
+	export let structuredData = null;
 
 	let structuredJSON;
 	$: {

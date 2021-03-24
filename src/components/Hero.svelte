@@ -99,10 +99,10 @@
 	{#if overlay}<div class="overlay" />{/if}
 	{#if bg}
 		<div class="bg-image hidden lg:block">
-			<Image fit="cover" src={bg.desktop || bg.mobile} />
+			<Image fit="cover" src={bg.desktop || bg.mobile} alt={bg.alt} />
 		</div>
 		<div class="bg-image lg:hidden">
-			<Image fit="cover" src={bg.mobile || bg.desktop} />
+			<Image fit="cover" src={bg.mobile || bg.desktop} alt={bg.alt} />
 		</div>
 	{/if}
 	<div class="container">
