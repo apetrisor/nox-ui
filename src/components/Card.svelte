@@ -25,10 +25,9 @@
 		}
 
 		&.full {
-			.image {
-				bottom: 0;
-			}
+			cursor: pointer;
 			.meta {
+				justify-content: flex-end;
 				background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
 				border: none;
 				color: #fff;
@@ -36,23 +35,29 @@
 				bottom: 0;
 				left: 0;
 				right: 0;
-				transition: height 0.4s, background 0.4s;
+				height: 50%;
+				transition: all 0.4s;
 				font-weight: 500;
 				font-size: 1.1em;
-				padding: 0.5em;
 				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+				.title-wrapper {
+					transition: all 0.4s;
+				}
 			}
 			&:hover {
 				box-shadow: none;
 				.meta {
 					height: 100%;
-					background: rgba(0, 0, 0, 0.3);
-					box-sizing: border-box;
+					.title-wrapper {
+						height: 100%;
+						color: #fff;
+					}
 				}
 			}
 		}
 
 		.image-wrapper {
+			display: block;
 			position: relative;
 			padding-top: 100%;
 			overflow: hidden;
@@ -69,10 +74,11 @@
 		}
 
 		.meta {
+			display: flex;
+			flex-direction: column;
 			background: #fff;
 			padding: 0.5em;
 			line-height: 1.5em;
-			box-sizing: content-box;
 			border-top: 1px solid $gray-200;
 		}
 
@@ -81,7 +87,6 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			box-sizing: content-box;
 		}
 
 		.title {
@@ -97,18 +102,14 @@
 </style>
 
 <div class="nox-card" class:full>
-	<div class="image-wrapper">
-		<a {href} rel={prefetch ? 'prefetch' : ''}>
-			<div class="image">
-				<Image src={image} alt={title} {fit} />
-			</div>
-		</a>
-	</div>
+	<a class="image-wrapper" {href} rel={prefetch ? 'prefetch' : ''}>
+		<div class="image">
+			<Image src={image} alt={title} {fit} />
+		</div>
+	</a>
 	<div class="meta">
-		<a {href} rel={prefetch ? 'prefetch' : ''}>
-			<div class="title-wrapper">
-				<div class="title">{title}</div>
-			</div>
+		<a class="title-wrapper" {href} rel={prefetch ? 'prefetch' : ''}>
+			<div class="title">{title}</div>
 		</a>
 		<slot />
 	</div>
