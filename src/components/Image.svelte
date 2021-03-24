@@ -4,7 +4,6 @@
 	export let src;
 	export let alt;
 	export let fit = '';
-	export let slow = false;
 	export let fade = true;
 
 	let imageElement;
@@ -32,9 +31,6 @@
 		&.loaded {
 			transition: opacity 0.7s ease-out;
 			opacity: 1;
-			&.slow {
-				transition: opacity 2s ease-out 1s;
-			}
 		}
 
 		&.cover,
@@ -73,7 +69,7 @@
 	}
 </style>
 
-<div class="nox-image" class:cover={fit === 'cover'} class:contain={fit === 'contain'} class:loaded class:slow>
+<div class="nox-image" class:cover={fit === 'cover'} class:contain={fit === 'contain'} class:loaded>
 	{#if fit && !supportsObjectFit}
 		<div style="background-image:url('{src}')" />
 	{:else}
