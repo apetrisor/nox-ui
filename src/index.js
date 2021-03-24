@@ -4,6 +4,7 @@ export {default as Check} from './components/Check.svelte';
 export {default as CheckBox} from './components/CheckBox.svelte';
 export {default as Columns} from './components/Columns.svelte';
 export {default as Footer} from './components/Footer.svelte';
+export {default as Genius} from './components/external/Genius.svelte';
 export {default as GoogleAnalytics} from './components/external/GoogleAnalytics.svelte';
 export {default as Header} from './components/Header.svelte';
 export {default as Hero} from './components/Hero.svelte';
