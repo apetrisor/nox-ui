@@ -6,7 +6,13 @@
 	let loaded = false;
 
 	onMount(() => {
-		loaded = true;
+		if (document.readyState === 'complete' || document.readyState === 'loaded') {
+			loaded = true;
+		} else {
+			document.addEventListener('DOMContentLoaded', function () {
+				loaded = true;
+			});
+		}
 	});
 
 	$: if (loaded) {
