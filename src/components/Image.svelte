@@ -33,6 +33,10 @@
 			opacity: 1;
 		}
 
+		img {
+			max-width: 100%;
+		}
+
 		&.cover,
 		&.contain {
 			width: 100%;
