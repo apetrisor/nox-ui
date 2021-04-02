@@ -6,7 +6,7 @@
 	let loaded = false;
 
 	onMount(() => {
-		if (document.readyState === 'complete' || document.readyState === 'loaded') {
+		if (document.readyState !== 'loading') {
 			loaded = true;
 		} else {
 			document.addEventListener('DOMContentLoaded', function () {
@@ -17,7 +17,7 @@
 
 	$: if (loaded) {
 		page;
-		Genius.amazon.convertLinks(id, false, 'http://buy.geni.us');
+		if (window.Genius) window.Genius.amazon.convertLinks(id, false, 'http://buy.geni.us');
 	}
 </script>
 
