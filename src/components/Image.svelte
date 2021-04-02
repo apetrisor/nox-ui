@@ -27,9 +27,9 @@
 <style lang="scss" global>
 	.nox-image {
 		opacity: 0;
+		transition: opacity 0.7s ease-out;
 
 		&.loaded {
-			transition: opacity 0.7s ease-out;
 			opacity: 1;
 		}
 
