@@ -178,7 +178,7 @@
 	</div>
 
 	{#if mobileMenuOpen}
-		<div transition:fly={{y: -20}} class="mobile-menu">
+		<div transition:fly={{y: -20, duration: 400}} class="mobile-menu">
 			<div class="container">
 				<SearchBar size="big" on:search {placeholder} value={query.q} />
 				<div class="submenu">
