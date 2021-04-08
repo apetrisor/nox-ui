@@ -18,7 +18,6 @@
 		padding: 80px 0px;
 		&.bg {
 			height: 400px;
-			overflow: hidden;
 			.bg-image {
 				position: absolute;
 				top: 0;
@@ -27,6 +26,11 @@
 				right: 0;
 				width: 100%;
 				height: 100%;
+				z-index: 0;
+				> div {
+					width: 100%;
+					height: 100%;
+				}
 			}
 
 			@screen sm {
@@ -74,7 +78,6 @@
 
 		.container {
 			position: relative;
-			z-index: 2;
 		}
 
 		.box {
@@ -96,13 +99,15 @@
 </style>
 
 <div class="nox-hero {className} {bgColor ? bgColor : ''}" class:bg>
-	{#if overlay}<div class="overlay" />{/if}
 	{#if bg}
-		<div class="bg-image hidden lg:block">
-			<Image fit="cover" src={bg.desktop || bg.mobile} alt={bg.alt} />
-		</div>
-		<div class="bg-image lg:hidden">
-			<Image fit="cover" src={bg.mobile || bg.desktop} alt={bg.alt} />
+		<div class="bg-image">
+			{#if overlay}<div class="overlay" />{/if}
+			<div class="hidden lg:block">
+				<Image fit="cover" src={bg.desktop || bg.mobile} alt={bg.alt} />
+			</div>
+			<div class="lg:hidden">
+				<Image fit="cover" src={bg.mobile || bg.desktop} alt={bg.alt} />
+			</div>
 		</div>
 	{/if}
 	<div class="container">
