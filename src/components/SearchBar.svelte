@@ -1,5 +1,5 @@
 <script>
-	import Image from './Image.svelte';
+	import ListItem from './ListItem.svelte';
 	import SearchOverlay from './SearchOverlay.svelte';
 	import debounce from 'lodash/debounce';
 	import SearchIcon from 'svelte-feather-icons/src/icons/SearchIcon.svelte';
@@ -52,20 +52,6 @@
 			background: #fff;
 			border-radius: 8px;
 			border: 1px solid $gray-400;
-			> form {
-				display: flex;
-				button {
-					width: 44px;
-					padding: 13px;
-					flex-shrink: 0;
-				}
-
-				input {
-					width: 100%;
-					background: none;
-					font-size: 16px;
-				}
-			}
 		}
 
 		&.focused {
@@ -83,7 +69,22 @@
 			}
 		}
 
-		&.tiny .search-wrapper > form {
+		form {
+			display: flex;
+			button {
+				width: 44px;
+				padding: 13px;
+				flex-shrink: 0;
+			}
+
+			input {
+				width: 100%;
+				background: none;
+				font-size: 16px;
+			}
+		}
+
+		&.tiny form {
 			button {
 				width: 36px;
 				padding: 9px;
@@ -93,7 +94,7 @@
 			}
 		}
 
-		&.big .search-wrapper > form {
+		&.big form {
 			button {
 				width: 60px;
 				padding: 18px;
@@ -118,16 +119,10 @@
 			border-bottom-left-radius: 8px;
 			box-shadow: $shadow-2xl;
 
-			.item {
-				padding: 0.8rem;
-				display: flex;
-				align-items: center;
-				.item-image {
-					width: 60px;
-					margin-right: 1rem;
-				}
+			.nox-list-item a {
 				&:hover {
 					background: $gray-100;
+					border-color: transparent;
 				}
 			}
 		}
@@ -160,12 +155,7 @@
 		{#if !overlayVisible && isFocused && isAutocompleted}
 			<div class="suggestions" transition:fly={{y: -20, duration: 400}}>
 				{#each autocompleteData as item}
-					<a class="item" href={item.url}>
-						{#if item.image}
-							<div class="item-image"><Image src={item.image} alt={item.text} /></div>
-						{/if}
-						<span>{item.text}</span>
-					</a>
+					<ListItem title={item.text} href={item.url} image={item.image} />
 				{/each}
 			</div>
 		{/if}

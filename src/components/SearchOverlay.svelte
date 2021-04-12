@@ -1,5 +1,5 @@
 <script>
-	import Image from './Image.svelte';
+	import ListItem from './ListItem.svelte';
 	import debounce from 'lodash/debounce';
 	import XIcon from 'svelte-feather-icons/src/icons/XIcon.svelte';
 	import ArrowLeftIcon from 'svelte-feather-icons/src/icons/ArrowLeftIcon.svelte';
@@ -36,46 +36,39 @@
 		inputElement.focus();
 	};
 	const handleSubmit = () => dispatch('search', value);
-
-	const handleLinkClick = () => {
-		dispatch('close');
-	};
+	const handleItemClick = () => dispatch('close');
 </script>
 
 <style lang="scss" global>
 	@import '../assets/variables';
 
 	.nox-search-overlay {
-		width: 100%;
 		color: $gray-700;
-		position: relative;
+		background: #fff;
+		border-radius: 8px;
+		border: 1px solid $gray-400;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 2000;
+		overflow-y: scroll;
 
-		.overlay-wrapper {
-			background: #fff;
-			border-radius: 8px;
-			border: 1px solid $gray-400;
-			position: fixed;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			z-index: 2000;
-			overflow-y: scroll;
-			> form {
-				display: flex;
-				button {
-					width: 60px;
-					height: 60px;
-					padding: 18px;
-					flex-shrink: 0;
-				}
+		form {
+			display: flex;
+			button {
+				width: 60px;
+				height: 60px;
+				padding: 18px;
+				flex-shrink: 0;
+			}
 
-				input {
-					width: 100%;
-					background: none;
-					font-size: 18px;
-					height: 60px;
-				}
+			input {
+				width: 100%;
+				background: none;
+				font-size: 18px;
+				height: 60px;
 			}
 		}
 
@@ -89,55 +82,34 @@
 			top: 60px;
 			bottom: 0;
 			overflow-y: scroll;
-			.item {
-				padding: 0.8rem;
-				display: flex;
-				align-items: center;
-				.item-image {
-					width: 60px;
-					margin-right: 1rem;
-				}
+			.nox-list-item a {
 				&:hover {
 					background: $gray-100;
+					border-color: transparent;
 				}
-			}
-			@media (min-width: 1024px) {
-				border: 1px solid $gray-400;
-				max-height: 400px;
-				bottom: auto;
-				border-bottom-right-radius: 8px;
-				border-bottom-left-radius: 8px;
-				box-shadow: $shadow-2xl;
 			}
 		}
 	}
 </style>
 
 <div class="nox-search-overlay" class:autocompleted={isAutocompleted}>
-	<div class="overlay-wrapper">
-		<form on:submit|preventDefault={handleSubmit}>
-			<button type="button" on:click|stopPropagation={handleClose}>
-				<ArrowLeftIcon />
+	<form on:submit|preventDefault={handleSubmit}>
+		<button type="button" on:click|stopPropagation={handleClose}>
+			<ArrowLeftIcon />
+		</button>
+		<input {placeholder} bind:this={inputElement} bind:value on:input={handleChange} />
+		{#if value}
+			<button title="Clear Search" type="button" on:click|stopPropagation={handleClear}>
+				<XIcon />
 			</button>
-			<input {placeholder} bind:this={inputElement} bind:value on:input={handleChange} />
-			{#if value}
-				<button title="Clear Search" type="button" on:click|stopPropagation={handleClear}>
-					<XIcon />
-				</button>
-			{/if}
-		</form>
-
-		{#if isAutocompleted}
-			<div class="suggestions" transition:fly={{y: -20, duration: 400}}>
-				{#each autocompleteData as item}
-					<a class="item" href={item.url} on:click={handleLinkClick}>
-						{#if item.image}
-							<div class="item-image"><Image src={item.image} alt={item.text} /></div>
-						{/if}
-						<span>{item.text}</span>
-					</a>
-				{/each}
-			</div>
 		{/if}
-	</div>
+	</form>
+
+	{#if isAutocompleted}
+		<div class="suggestions" transition:fly={{y: -20, duration: 400}}>
+			{#each autocompleteData as item}
+				<ListItem title={item.text} href={item.url} image={item.image} on:click={handleItemClick} />
+			{/each}
+		</div>
+	{/if}
 </div>
