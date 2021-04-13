@@ -112,6 +112,7 @@
 			right: 0;
 			bottom: 0;
 			overflow-y: scroll;
+			overflow-x: hidden;
 			border: 1px solid $gray-400;
 			max-height: 400px;
 			bottom: auto;

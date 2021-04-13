@@ -82,6 +82,7 @@
 			top: 60px;
 			bottom: 0;
 			overflow-y: scroll;
+			overflow-x: hidden;
 			.nox-list-item a {
 				&:hover {
 					background: $gray-100;
