@@ -18,6 +18,7 @@ export {default as Pagination} from './components/Pagination.svelte';
 export {default as Rating} from './components/Rating.svelte';
 export {default as RatingBadge} from './components/RatingBadge.svelte';
 export {default as SearchBar} from './components/SearchBar.svelte';
+export {default as SearchOverlay} from './components/SearchOverlay.svelte';
 export {default as Select} from './components/Select.svelte';
 export {default as ShareBox} from './components/ShareBox.svelte';
 export {default as SocialBox} from './components/SocialBox.svelte';

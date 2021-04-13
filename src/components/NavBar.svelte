@@ -1,14 +1,19 @@
 <script>
+	import SearchOverlay from './SearchOverlay.svelte';
 	import SearchBar from './SearchBar.svelte';
 	import {fly} from 'svelte/transition';
 	import XIcon from 'svelte-feather-icons/src/icons/XIcon.svelte';
 	import MenuIcon from 'svelte-feather-icons/src/icons/MenuIcon.svelte';
+	import SearchIcon from 'svelte-feather-icons/src/icons/SearchIcon.svelte';
 
 	export let submenu;
 	export let path;
 	export let query;
 	export let placeholder;
 	export let sticky = false;
+	export let autocomplete;
+
+	let searchOverlayVisible = false;
 
 	let mobileMenuOpen = false;
 	// When page or query update, close menus
@@ -105,7 +110,7 @@
 
 		.submenu {
 			display: none;
-			margin-bottom: 15px;
+			padding-bottom: 15px;
 			@screen md {
 				display: block;
 			}
@@ -131,11 +136,10 @@
 			.submenu {
 				display: flex;
 				flex-direction: column;
-				margin-top: 20px;
 				a {
 					padding: 20px;
 					font-size: 1.1rem;
-					border-top: 1px solid $gray-200;
+					border-bottom: 1px solid $gray-200;
 				}
 			}
 		}
@@ -148,20 +152,23 @@
 	<div class="inner">
 		<div class="header">
 			<div class="container">
-				<div>
-					<a href="/"><slot name="logo">Company Logo</slot></a>
-				</div>
-
-				<div class="search-bar">
-					<SearchBar size="tiny" stretch {placeholder} value={query.q} on:search />
-				</div>
-
 				<button class="menu-button" on:click={toggleMobileMenu} type="button">
 					{#if mobileMenuOpen}
 						<XIcon />
 					{:else}
 						<MenuIcon />
 					{/if}
+				</button>
+
+				<div>
+					<a href="/"><slot name="logo">Company Logo</slot></a>
+				</div>
+
+				<div class="search-bar">
+					<SearchBar {autocomplete} size="tiny" stretch {placeholder} value={query.q} on:search />
+				</div>
+				<button class="menu-button" type="button" on:click={() => (searchOverlayVisible = true)}>
+					<SearchIcon />
 				</button>
 			</div>
 		</div>
@@ -175,12 +182,14 @@
 				</div>
 			</div>
 		{/if}
+		{#if searchOverlayVisible}
+			<SearchOverlay on:close={() => (searchOverlayVisible = false)} on:search {placeholder} value={query.q} {autocomplete} />
+		{/if}
 	</div>
 
 	{#if mobileMenuOpen}
 		<div transition:fly={{y: -20, duration: 400}} class="mobile-menu">
 			<div class="container">
-				<SearchBar size="big" on:search {placeholder} value={query.q} />
 				<div class="submenu">
 					{#each submenu as page}
 						<a href={page.path} class:active={page.path === path}>{page.name}</a>

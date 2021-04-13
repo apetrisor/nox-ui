@@ -38,11 +38,13 @@
 	}
 </style>
 
-<div class="nox-list-item">
+<div class="nox-list-item" on:click>
 	<a {href}>
-		<div class="image">
-			<Image src={image} alt={title} {fit} />
-		</div>
+		{#if image}
+			<div class="image">
+				<Image src={image} alt={title} {fit} />
+			</div>
+		{/if}
 		<div class="item-info">
 			<div class="item-title">{title}</div>
 			<slot />
