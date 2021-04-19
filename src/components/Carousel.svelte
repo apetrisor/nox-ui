@@ -1,6 +1,8 @@
 <script>
 	import Siema from 'siema';
 	import {onMount} from 'svelte';
+	import ChevronLeftIcon from 'svelte-feather-icons/src/icons/ChevronLeftIcon.svelte';
+	import ChevronRightIcon from 'svelte-feather-icons/src/icons/ChevronRightIcon.svelte';
 
 	export let perPage = 3;
 	export let controls = true;
@@ -88,10 +90,10 @@
 	</div>
 	{#if controls}
 		<button class="left" on:click={goLeft}>
-			<slot name="prev-button" />
+			<slot name="prev-button"><ChevronLeftIcon /></slot>
 		</button>
 		<button class="right" on:click={goRight}>
-			<slot name="next-button" />
+			<slot name="next-button"><ChevronRightIcon /></slot>
 		</button>
 	{/if}
 </div>
