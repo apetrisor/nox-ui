@@ -1,4 +1,5 @@
 export {default as Card} from './components/Card.svelte';
+export {default as CardsSlider} from './components/CardsSlider.svelte';
 export {default as Carousel} from './components/Carousel.svelte';
 export {default as Centered} from './components/Centered.svelte';
 export {default as Check} from './components/Check.svelte';
