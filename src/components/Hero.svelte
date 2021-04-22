@@ -31,6 +31,17 @@
 					width: 100%;
 					height: 100%;
 				}
+				.desktop {
+					display: none;
+					@screen lg {
+						display: block;
+					}
+				}
+				.mobile {
+					@screen lg {
+						display: none;
+					}
+				}
 			}
 
 			@screen sm {
@@ -102,10 +113,10 @@
 	{#if bg}
 		<div class="bg-image">
 			{#if overlay}<div class="overlay" />{/if}
-			<div class="hidden lg:block">
+			<div class="desktop">
 				<Image fit="cover" src={bg.desktop || bg.mobile} alt={bg.alt} />
 			</div>
-			<div class="lg:hidden">
+			<div class="mobile">
 				<Image fit="cover" src={bg.mobile || bg.desktop} alt={bg.alt} />
 			</div>
 		</div>
