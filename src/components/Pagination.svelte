@@ -4,7 +4,7 @@
 
 	export let data;
 	export let path;
-	export let query;
+	export let searchParams;
 
 	// Generate an array of page numbers
 	// -1 means dots for mobile only, 0 means dots
@@ -19,13 +19,47 @@
 		return pages;
 	};
 
+	const getQuery = page => {
+		searchParams.set('p', page);
+		return searchParams.toString();
+	};
+
 	$: current = data.page;
 	$: total = data.pages;
 	$: pages = getPages(current, total);
-
-	$: q = query.replace(/^\?/, '').replace(/[&]*p=[0-9]+/g, '');
-	$: if (q) q = '&' + q;
 </script>
+
+{#if total > 1}
+	<div class="nox-pagination">
+		{#if current > 1}
+			<a class="item prev" href="{path}?{getQuery(current - 1)}">
+				<slot name="prev-button">
+					<ChevronLeftIcon />
+				</slot>
+			</a>
+		{/if}
+		{#each pages as page}
+			{#if page === -1}
+				<span class="dots mobile">...</span>
+			{:else if page === 0}
+				<span class="dots">...</span>
+			{:else if page === current}
+				<span class="item current">{page}</span>
+			{:else if page !== 1 && page !== total}
+				<a class="item tablet" href="{path}?{getQuery(page)}">{page}</a>
+			{:else}
+				<a class="item" href="{path}?{getQuery(page)}">{page}</a>
+			{/if}
+		{/each}
+		{#if current < total}
+			<a class="item next" href="{path}?{getQuery(current + 1)}">
+				<slot name="next-button">
+					<ChevronRightIcon />
+				</slot>
+			</a>
+		{/if}
+	</div>
+{/if}
 
 <style lang="scss" global>
 	@import '../assets/variables';
@@ -62,35 +96,3 @@
 		}
 	}
 </style>
-
-{#if total > 1}
-	<div class="nox-pagination">
-		{#if current > 1}
-			<a class="item prev" href="{path}?p={current - 1}{q}">
-				<slot name="prev-button">
-					<ChevronLeftIcon />
-				</slot>
-			</a>
-		{/if}
-		{#each pages as page}
-			{#if page === -1}
-				<span class="dots mobile">...</span>
-			{:else if page === 0}
-				<span class="dots">...</span>
-			{:else if page === current}
-				<span class="item current">{page}</span>
-			{:else if page !== 1 && page !== total}
-				<a class="item tablet" href="{path}?p={page}{q}">{page}</a>
-			{:else}
-				<a class="item" href="{path}?p={page}{q}">{page}</a>
-			{/if}
-		{/each}
-		{#if current < total}
-			<a class="item next" href="{path}?p={current + 1}{q}">
-				<slot name="next-button">
-					<ChevronRightIcon />
-				</slot>
-			</a>
-		{/if}
-	</div>
-{/if}
