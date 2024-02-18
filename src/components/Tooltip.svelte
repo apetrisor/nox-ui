@@ -8,6 +8,11 @@
 	if (width) style = `width: ${width}`;
 </script>
 
+<div class="nox-tooltip">
+	<slot />
+	<div class="content" class:top class:bottom {style}>{content}</div>
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -54,8 +59,3 @@
 		}
 	}
 </style>
-
-<div class="nox-tooltip">
-	<slot />
-	<div class="content" class:top class:bottom {style}>{content}</div>
-</div>

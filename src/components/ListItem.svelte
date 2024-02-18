@@ -6,6 +6,20 @@
 	export let fit = 'contain';
 </script>
 
+<div class="nox-list-item" on:click>
+	<a {href}>
+		{#if image}
+			<div class="image">
+				<Image src={image} alt={title} {fit} />
+			</div>
+		{/if}
+		<div class="item-info">
+			<div class="item-title">{title}</div>
+			<slot />
+		</div>
+	</a>
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -37,17 +51,3 @@
 		}
 	}
 </style>
-
-<div class="nox-list-item" on:click>
-	<a {href}>
-		{#if image}
-			<div class="image">
-				<Image src={image} alt={title} {fit} />
-			</div>
-		{/if}
-		<div class="item-info">
-			<div class="item-title">{title}</div>
-			<slot />
-		</div>
-	</a>
-</div>

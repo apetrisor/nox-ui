@@ -7,6 +7,18 @@
 	export {className as class};
 </script>
 
+<div class="nox-check {className}" class:checked>
+	{#if checked}
+		<slot name="checked">
+			<FaRegCheckCircle />
+		</slot>
+	{:else}
+		<slot name="unchecked">
+			<FaRegTimesCircle />
+		</slot>
+	{/if}
+</div>
+
 <style>
 	.nox-check {
 		display: inline-block;
@@ -19,15 +31,3 @@
 		}
 	}
 </style>
-
-<div class="nox-check {className}" class:checked>
-	{#if checked}
-		<slot name="checked">
-			<FaRegCheckCircle />
-		</slot>
-	{:else}
-		<slot name="unchecked">
-			<FaRegTimesCircle />
-		</slot>
-	{/if}
-</div>

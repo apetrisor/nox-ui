@@ -39,6 +39,28 @@
 	const handleItemClick = () => dispatch('close');
 </script>
 
+<div class="nox-search-overlay" class:autocompleted={isAutocompleted}>
+	<form on:submit|preventDefault={handleSubmit}>
+		<button type="button" on:click|stopPropagation={handleClose}>
+			<ArrowLeftIcon />
+		</button>
+		<input {placeholder} bind:this={inputElement} bind:value on:input={handleChange} />
+		{#if value}
+			<button title="Clear Search" type="button" on:click|stopPropagation={handleClear}>
+				<XIcon />
+			</button>
+		{/if}
+	</form>
+
+	{#if isAutocompleted}
+		<div class="suggestions" transition:fly={{y: -20, duration: 400}}>
+			{#each autocompleteData as item}
+				<ListItem title={item.text} href={item.url} image={item.image} on:click={handleItemClick} />
+			{/each}
+		</div>
+	{/if}
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -92,25 +114,3 @@
 		}
 	}
 </style>
-
-<div class="nox-search-overlay" class:autocompleted={isAutocompleted}>
-	<form on:submit|preventDefault={handleSubmit}>
-		<button type="button" on:click|stopPropagation={handleClose}>
-			<ArrowLeftIcon />
-		</button>
-		<input {placeholder} bind:this={inputElement} bind:value on:input={handleChange} />
-		{#if value}
-			<button title="Clear Search" type="button" on:click|stopPropagation={handleClear}>
-				<XIcon />
-			</button>
-		{/if}
-	</form>
-
-	{#if isAutocompleted}
-		<div class="suggestions" transition:fly={{y: -20, duration: 400}}>
-			{#each autocompleteData as item}
-				<ListItem title={item.text} href={item.url} image={item.image} on:click={handleItemClick} />
-			{/each}
-		</div>
-	{/if}
-</div>

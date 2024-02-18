@@ -3,6 +3,10 @@
 	export let score;
 </script>
 
+<div class="nox-rating-badge">
+	<FaStar />{score}
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -23,7 +27,3 @@
 		}
 	}
 </style>
-
-<div class="nox-rating-badge">
-	<FaStar />{score}
-</div>

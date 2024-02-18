@@ -22,6 +22,13 @@
 	};
 </script>
 
+<select value={selectedOption} on:change={handleChange}>
+	<option disabled value="">{placeholder}</option>
+	{#each currentOptions as option}
+		<option value={option}>{option}</option>
+	{/each}
+</select>
+
 <style lang="scss">
 	select {
 		opacity: 0;
@@ -37,10 +44,3 @@
 		appearance: none;
 	}
 </style>
-
-<select value={selectedOption} on:change={handleChange}>
-	<option disabled value="">{placeholder}</option>
-	{#each currentOptions as option}
-		<option value={option}>{option}</option>
-	{/each}
-</select>

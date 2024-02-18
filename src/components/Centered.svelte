@@ -2,6 +2,12 @@
 	export let breakpoint = 'md';
 </script>
 
+<div class="nox-centered {breakpoint}">
+	<div>
+		<slot />
+	</div>
+</div>
+
 <style lang="scss" global>
 	.nox-centered {
 		display: flex;
@@ -38,9 +44,3 @@
 		}
 	}
 </style>
-
-<div class="nox-centered {breakpoint}">
-	<div>
-		<slot />
-	</div>
-</div>

@@ -9,6 +9,25 @@
 	$: optionsHash = Object.fromEntries(options.map(o => [o.value, o.name]));
 </script>
 
+<div class="nox-select">
+	{#if label}
+		<span>{label}</span>
+	{/if}
+	<div class="box">
+		<div>{optionsHash[value]}</div>
+		<div class="chevron"><ChevronDownIcon /></div>
+
+		<select {value} on:change>
+			{#if placeholder}
+				<option disabled value="">{placeholder}</option>
+			{/if}
+			{#each options as option}
+				<option value={option.value}>{option.name}</option>
+			{/each}
+		</select>
+	</div>
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -55,22 +74,3 @@
 		}
 	}
 </style>
-
-<div class="nox-select">
-	{#if label}
-		<span>{label}</span>
-	{/if}
-	<div class="box">
-		<div>{optionsHash[value]}</div>
-		<div class="chevron"><ChevronDownIcon /></div>
-
-		<select {value} on:change>
-			{#if placeholder}
-				<option disabled value="">{placeholder}</option>
-			{/if}
-			{#each options as option}
-				<option value={option.value}>{option.name}</option>
-			{/each}
-		</select>
-	</div>
-</div>

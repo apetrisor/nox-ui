@@ -1,3 +1,7 @@
+<div class="nox-header">
+	<slot />
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -43,7 +47,3 @@
 		}
 	}
 </style>
-
-<div class="nox-header">
-	<slot />
-</div>

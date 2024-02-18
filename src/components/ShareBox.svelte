@@ -18,6 +18,26 @@
 	// $: linkedinLink = encodeURI(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`);
 </script>
 
+<div class="nox-share-box">
+	<slot name="title" />
+	<div class="buttons" class:round class:filled>
+		<Link class="facebook" external href={facebookLink}>
+			<FaFacebookF />
+		</Link>
+		<Link class="twitter" external href={twitterLink}>
+			<FaTwitter />
+		</Link>
+		<Link class="pinterest" external href={pinterestLink}>
+			<FaPinterest />
+		</Link>
+		<!-- <Link class="linkedin" external href={linkedinLink}>
+			<FaLinkedinIn />
+		</Link> -->
+		<!-- <a href="https://api.whatsapp.com/send?text=urlencodedtext" target="_blank">WA</a> -->
+		<!-- <a rel="nofollow" target="_blank" href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a> -->
+	</div>
+</div>
+
 <style lang="scss" global>
 	.nox-share-box {
 		.buttons {
@@ -28,7 +48,10 @@
 			width: 44px;
 			height: 44px;
 			padding: 10px;
-			transition: color 0.3s, background-color 0.3s, transform 0.3s;
+			transition:
+				color 0.3s,
+				background-color 0.3s,
+				transform 0.3s;
 			&:hover {
 				transform: translateY(-2px);
 			}
@@ -74,23 +97,3 @@
 		}
 	}
 </style>
-
-<div class="nox-share-box">
-	<slot name="title" />
-	<div class="buttons" class:round class:filled>
-		<Link class="facebook" external href={facebookLink}>
-			<FaFacebookF />
-		</Link>
-		<Link class="twitter" external href={twitterLink}>
-			<FaTwitter />
-		</Link>
-		<Link class="pinterest" external href={pinterestLink}>
-			<FaPinterest />
-		</Link>
-		<!-- <Link class="linkedin" external href={linkedinLink}>
-			<FaLinkedinIn />
-		</Link> -->
-		<!-- <a href="https://api.whatsapp.com/send?text=urlencodedtext" target="_blank">WA</a> -->
-		<!-- <a rel="nofollow" target="_blank" href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a> -->
-	</div>
-</div>

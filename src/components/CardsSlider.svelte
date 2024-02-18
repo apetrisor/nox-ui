@@ -16,6 +16,18 @@
 	$: items, fillItems(), (loaded = false), setTimeout(() => (loaded = true), 1000);
 </script>
 
+{#if items.length}
+	<div class="nox-card-slider" class:loaded>
+		<Carousel perPage={{1280: 4, 768: 3, 480: 2}}>
+			{#each items as item}
+				<div class="card-wrapper">
+					<svelte:component this={cardComponent} data={item} />
+				</div>
+			{/each}
+		</Carousel>
+	</div>
+{/if}
+
 <style lang="scss" global>
 	.nox-card-slider {
 		margin: 0 -5px;
@@ -38,15 +50,3 @@
 		padding: 0 5px;
 	}
 </style>
-
-{#if items.length}
-	<div class="nox-card-slider" class:loaded>
-		<Carousel perPage={{1280: 4, 768: 3, 480: 2}}>
-			{#each items as item}
-				<div class="card-wrapper">
-					<svelte:component this={cardComponent} data={item} />
-				</div>
-			{/each}
-		</Carousel>
-	</div>
-{/if}

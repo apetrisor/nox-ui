@@ -19,13 +19,13 @@
 					draggable: true,
 					multipleDrag: true,
 					duration: 200,
-					easing: 'ease-out',
+					easing: 'ease-out'
 			  }
 			: {
 					draggable: false,
 					multipleDrag: false,
 					duration: 700,
-					easing: 'cubic-bezier(0.4, 0, 0, 1)',
+					easing: 'cubic-bezier(0.4, 0, 0, 1)'
 			  };
 
 		controller = new Siema({
@@ -34,7 +34,7 @@
 			loop: true,
 			threshold,
 			rtl,
-			...props,
+			...props
 		});
 
 		return () => controller.destroy();
@@ -43,6 +43,20 @@
 	const goLeft = () => controller.prev(controller.perPage);
 	const goRight = () => controller.next(controller.perPage);
 </script>
+
+<div class="nox-carousel">
+	<div class="slides" bind:this={siema}>
+		<slot />
+	</div>
+	{#if controls}
+		<button class="left" on:click={goLeft}>
+			<slot name="prev-button"><ChevronLeftIcon /></slot>
+		</button>
+		<button class="right" on:click={goRight}>
+			<slot name="next-button"><ChevronRightIcon /></slot>
+		</button>
+	{/if}
+</div>
 
 <style lang="scss" global>
 	.nox-carousel {
@@ -83,17 +97,3 @@
 		}
 	}
 </style>
-
-<div class="nox-carousel">
-	<div class="slides" bind:this={siema}>
-		<slot />
-	</div>
-	{#if controls}
-		<button class="left" on:click={goLeft}>
-			<slot name="prev-button"><ChevronLeftIcon /></slot>
-		</button>
-		<button class="right" on:click={goRight}>
-			<slot name="next-button"><ChevronRightIcon /></slot>
-		</button>
-	{/if}
-</div>

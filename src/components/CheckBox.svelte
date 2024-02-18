@@ -13,6 +13,17 @@
 	};
 </script>
 
+<div class="nox-check-box" on:click={handleChange}>
+	<div class="box">
+		{#if checked}
+			<XIcon />
+		{/if}
+	</div>
+	{#if label}
+		<span>{label}</span>
+	{/if}
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -37,14 +48,3 @@
 		}
 	}
 </style>
-
-<div class="nox-check-box" on:click={handleChange}>
-	<div class="box">
-		{#if checked}
-			<XIcon />
-		{/if}
-	</div>
-	{#if label}
-		<span>{label}</span>
-	{/if}
-</div>

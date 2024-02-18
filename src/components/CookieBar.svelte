@@ -15,6 +15,17 @@
 	};
 </script>
 
+{#if visible}
+	<div class="nox-cookie-bar">
+		<slot>We're using little cookies to improve your awesome surfing experience</slot>
+		<span on:click={handleAccept}>
+			<slot name="button">
+				<button>Ok</button>
+			</slot>
+		</span>
+	</div>
+{/if}
+
 <style lang="scss" global>
 	.nox-cookie-bar {
 		color: #fff;
@@ -34,14 +45,3 @@
 		}
 	}
 </style>
-
-{#if visible}
-	<div class="nox-cookie-bar">
-		<slot>We're using little cookies to improve your awesome surfing experience</slot>
-		<span on:click={handleAccept}>
-			<slot name="button">
-				<button>Ok</button>
-			</slot>
-		</span>
-	</div>
-{/if}

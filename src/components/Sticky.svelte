@@ -21,6 +21,12 @@
 	});
 </script>
 
+<svelte:window bind:scrollY />
+
+<div bind:this={element} class="nox-sticky" class:stuck style="top: {top}px">
+	<slot />
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -34,9 +40,3 @@
 		}
 	}
 </style>
-
-<svelte:window bind:scrollY />
-
-<div bind:this={element} class="nox-sticky" class:stuck style="top: {top}px">
-	<slot />
-</div>

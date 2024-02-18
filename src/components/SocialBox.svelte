@@ -8,6 +8,21 @@
 	export let links = {};
 </script>
 
+<div class="nox-social-box">
+	{#if links.facebook}
+		<Link external class="facebook" href={links.facebook}><FaFacebookSquare /></Link>
+	{/if}
+	{#if links.twitter}
+		<Link external class="twitter" href={links.twitter}><FaTwitter /></Link>
+	{/if}
+	{#if links.pinterest}
+		<Link external class="pinterest" href={links.pinterest}><FaPinterest /></Link>
+	{/if}
+	{#if links.instagram}
+		<Link external class="instagram" href={links.instagram}><FaInstagram /></Link>
+	{/if}
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -39,18 +54,3 @@
 		}
 	}
 </style>
-
-<div class="nox-social-box">
-	{#if links.facebook}
-		<Link external class="facebook" href={links.facebook}><FaFacebookSquare /></Link>
-	{/if}
-	{#if links.twitter}
-		<Link external class="twitter" href={links.twitter}><FaTwitter /></Link>
-	{/if}
-	{#if links.pinterest}
-		<Link external class="pinterest" href={links.pinterest}><FaPinterest /></Link>
-	{/if}
-	{#if links.instagram}
-		<Link external class="instagram" href={links.instagram}><FaInstagram /></Link>
-	{/if}
-</div>
