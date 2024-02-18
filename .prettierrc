@@ -6,5 +6,9 @@
 	"bracketSpacing": false,
 	"arrowParens": "avoid",
 	"svelteBracketNewLine": true,
-	"svelteSortOrder": "options-scripts-styles-markup"
+	"htmlWhitespaceSensitivity": "strict",
+	"trailingComma": "none",
+	"plugins": ["prettier-plugin-svelte"],
+	"pluginSearchDirs": ["."],
+	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
 }
