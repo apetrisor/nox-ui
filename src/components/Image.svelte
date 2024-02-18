@@ -1,5 +1,6 @@
 <script>
 	import {onMount} from 'svelte';
+	import {browser} from '$app/environment';
 
 	export let src;
 	export let alt;
@@ -7,7 +8,7 @@
 	export let fade = true;
 
 	let imageElement;
-	let supportsObjectFit = process.browser && 'objectFit' in document.documentElement.style !== false;
+	let supportsObjectFit = browser && 'objectFit' in document.documentElement.style !== false;
 
 	let doFade = fade && (!!fit ? supportsObjectFit : true);
 	let loaded = doFade ? false : true;
