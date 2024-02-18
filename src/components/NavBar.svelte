@@ -1,4 +1,5 @@
 <script>
+	import {browser} from '$app/environment';
 	import SearchOverlay from './SearchOverlay.svelte';
 	import SearchBar from './SearchBar.svelte';
 	import {fly} from 'svelte/transition';
@@ -11,7 +12,7 @@
 	export let query;
 	export let placeholder;
 	export let sticky = false;
-	export let autocomplete;
+	export let autocomplete = null;
 
 	let searchOverlayVisible = false;
 
@@ -19,7 +20,7 @@
 	// When page or query update, close menus
 	$: path, query, (mobileMenuOpen = false);
 	// When mobile menu changes state, toggle document scrolling
-	$: if (process.browser) document.body.style['overflow'] = mobileMenuOpen ? 'hidden' : '';
+	$: if (browser) document.body.style['overflow'] = mobileMenuOpen ? 'hidden' : '';
 
 	const toggleMobileMenu = () => (mobileMenuOpen = !mobileMenuOpen);
 
@@ -27,18 +28,88 @@
 	$: stuck = scrollY > 60;
 </script>
 
+<svelte:window bind:scrollY />
+
+<div class="nox-navbar" class:is-sticky={sticky} class:stuck>
+	<div class="inner">
+		<div class="container">
+			<div class="header mobile">
+				<div class="header-left">
+					<button class="menu-button" on:click={toggleMobileMenu} type="button">
+						{#if mobileMenuOpen}
+							<XIcon />
+						{:else}
+							<MenuIcon />
+						{/if}
+					</button>
+				</div>
+
+				<slot name="logo"><a href="/">Company Logo</a></slot>
+
+				<div class="header-right">
+					<button class="menu-button" type="button" on:click={() => (searchOverlayVisible = true)}>
+						<SearchIcon />
+					</button>
+					<slot name="right" />
+				</div>
+			</div>
+
+			<div class="header">
+				<div class="header-left">
+					<slot name="logo"><a href="/">Company Logo</a></slot>
+				</div>
+
+				<div class="search-bar">
+					<SearchBar {autocomplete} size="tiny" stretch {placeholder} value={query} on:search />
+				</div>
+
+				<div class="header-right">
+					<slot name="right" />
+				</div>
+			</div>
+
+			{#if submenu}
+				<div class="submenu">
+					{#each submenu as page}
+						<a href={page.path} class:active={page.path === path}>{page.name}</a>
+					{/each}
+				</div>
+			{/if}
+		</div>
+	</div>
+
+	{#if searchOverlayVisible}
+		<SearchOverlay on:close={() => (searchOverlayVisible = false)} on:search {placeholder} value={query} {autocomplete} />
+	{/if}
+
+	{#if mobileMenuOpen}
+		<div transition:fly={{y: -20, duration: 400}} class="mobile-menu">
+			<div class="container">
+				{#if submenu}
+					<div class="submenu">
+						{#each submenu as page}
+							<a href={page.path} class:active={page.path === path}>{page.name}</a>
+						{/each}
+					</div>
+				{/if}
+			</div>
+		</div>
+	{/if}
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
 	.nox-navbar {
 		transition: all 0.3s;
 		position: relative;
+
 		.inner {
 			border-bottom: 1px solid $gray-200;
 			background: #fff;
 		}
 
-		&.sticky {
+		&.is-sticky {
 			height: 64px;
 			.inner {
 				height: 64px;
@@ -46,7 +117,9 @@
 				width: 100%;
 				top: 0px;
 				z-index: 1000;
-				transition: height 0.3s, box-shadow 0.3s;
+				transition:
+					height 0.3s,
+					box-shadow 0.3s;
 				.submenu {
 					transition: all 0.3s;
 				}
@@ -73,19 +146,26 @@
 			}
 		}
 
-		[slot='logo'] {
-			height: 24px;
+		.header {
+			display: none;
+			align-items: center;
+			justify-content: space-between;
+			padding: 13px 0;
 			@screen md {
+				display: flex;
+			}
+			[slot='logo'] img {
 				height: 26px;
 			}
-		}
-
-		.header {
-			padding: 10px 0;
-			.container {
+			&.mobile {
 				display: flex;
-				align-items: center;
-				justify-content: space-between;
+				padding: 10px 0;
+				@screen md {
+					display: none;
+				}
+				[slot='logo'] img {
+					height: 24px;
+				}
 			}
 			.menu-button {
 				width: 44px;
@@ -93,30 +173,26 @@
 				padding: 10px;
 				margin-right: -10px;
 			}
-			@screen md {
-				padding: 13px 0;
-				.menu-button {
-					display: none;
-				}
-			}
 		}
 
-		.search-bar {
-			display: none;
-			@screen md {
-				display: block;
-			}
+		.header-left,
+		.header-right {
+			display: flex;
+			align-items: center;
+			flex: 1;
+		}
+
+		.header-right {
+			justify-content: flex-end;
 		}
 
 		.submenu {
 			display: none;
 			padding-bottom: 15px;
+			justify-content: space-between;
+			margin: 0px auto;
 			@screen md {
-				display: block;
-			}
-			.container {
 				display: flex;
-				justify-content: space-between;
 			}
 		}
 
@@ -145,57 +221,3 @@
 		}
 	}
 </style>
-
-<svelte:window bind:scrollY />
-
-<div class="nox-navbar" class:sticky class:stuck>
-	<div class="inner">
-		<div class="header">
-			<div class="container">
-				<button class="menu-button" on:click={toggleMobileMenu} type="button">
-					{#if mobileMenuOpen}
-						<XIcon />
-					{:else}
-						<MenuIcon />
-					{/if}
-				</button>
-
-				<div>
-					<a href="/"><slot name="logo">Company Logo</slot></a>
-				</div>
-
-				<div class="search-bar">
-					<SearchBar {autocomplete} size="tiny" stretch {placeholder} value={query.q} on:search />
-				</div>
-				<button class="menu-button" type="button" on:click={() => (searchOverlayVisible = true)}>
-					<SearchIcon />
-				</button>
-			</div>
-		</div>
-
-		{#if submenu}
-			<div class="submenu">
-				<div class="container">
-					{#each submenu as page}
-						<a href={page.path} class:active={page.path === path}>{page.name}</a>
-					{/each}
-				</div>
-			</div>
-		{/if}
-		{#if searchOverlayVisible}
-			<SearchOverlay on:close={() => (searchOverlayVisible = false)} on:search {placeholder} value={query.q} {autocomplete} />
-		{/if}
-	</div>
-
-	{#if mobileMenuOpen}
-		<div transition:fly={{y: -20, duration: 400}} class="mobile-menu">
-			<div class="container">
-				<div class="submenu">
-					{#each submenu as page}
-						<a href={page.path} class:active={page.path === path}>{page.name}</a>
-					{/each}
-				</div>
-			</div>
-		</div>
-	{/if}
-</div>
