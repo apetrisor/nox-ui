@@ -1,3 +1,4 @@
+export {default as Breadcrumb} from './components/Breadcrumb.svelte';
 export {default as Card} from './components/Card.svelte';
 export {default as CardsSlider} from './components/CardsSlider.svelte';
 export {default as Carousel} from './components/Carousel.svelte';
