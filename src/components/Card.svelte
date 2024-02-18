@@ -8,6 +8,20 @@
 	export let full = false;
 </script>
 
+<div class="nox-card" class:full>
+	<a class="image-wrapper" {href} rel={prefetch ? 'prefetch' : ''}>
+		<div class="image">
+			<Image src={image} alt={title} {fit} {...$$restProps} />
+		</div>
+	</a>
+	<div class="meta">
+		<a class="title-wrapper" {href} rel={prefetch ? 'prefetch' : ''}>
+			<div class="title">{title}</div>
+		</a>
+		<slot />
+	</div>
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -100,17 +114,3 @@
 		}
 	}
 </style>
-
-<div class="nox-card" class:full>
-	<a class="image-wrapper" {href} rel={prefetch ? 'prefetch' : ''}>
-		<div class="image">
-			<Image src={image} alt={title} {fit} />
-		</div>
-	</a>
-	<div class="meta">
-		<a class="title-wrapper" {href} rel={prefetch ? 'prefetch' : ''}>
-			<div class="title">{title}</div>
-		</a>
-		<slot />
-	</div>
-</div>

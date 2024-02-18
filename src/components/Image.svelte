@@ -24,6 +24,14 @@
 	});
 </script>
 
+<div class="nox-image" class:cover={fit === 'cover'} class:contain={fit === 'contain'} class:loaded>
+	{#if fit && !supportsObjectFit}
+		<div style="background-image:url('{src}')" />
+	{:else}
+		<img bind:this={imageElement} {src} {alt} on:contextmenu {...$$restProps} />
+	{/if}
+</div>
+
 <style lang="scss" global>
 	.nox-image {
 		opacity: 0;
@@ -72,11 +80,3 @@
 		}
 	}
 </style>
-
-<div class="nox-image" class:cover={fit === 'cover'} class:contain={fit === 'contain'} class:loaded>
-	{#if fit && !supportsObjectFit}
-		<div style="background-image:url('{src}')" />
-	{:else}
-		<img bind:this={imageElement} {src} {alt} />
-	{/if}
-</div>
