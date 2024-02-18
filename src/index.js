@@ -6,6 +6,7 @@ export {default as Centered} from './components/Centered.svelte';
 export {default as Check} from './components/Check.svelte';
 export {default as CheckBox} from './components/CheckBox.svelte';
 export {default as CookieBar} from './components/CookieBar.svelte';
+export {default as Dropdown} from './components/Dropdown.svelte';
 export {default as Genius} from './components/external/Genius.svelte';
 export {default as GoogleAnalytics} from './components/external/GoogleAnalytics.svelte';
 export {default as Header} from './components/Header.svelte';
