@@ -39,26 +39,58 @@
 	const handleSubmit = () => dispatch('search', value);
 </script>
 
+<svelte:window bind:innerWidth={screenWidth} />
+
+<div
+	class="nox-search-bar"
+	class:focused={isFocused}
+	class:autocompleted={isAutocompleted}
+	class:stretch
+	class:tiny={size === 'tiny'}
+	class:big={size === 'big'}
+>
+	<form on:submit|preventDefault={handleSubmit}>
+		<button type="submit" title={placeholder}>
+			<SearchIcon size="18" />
+		</button>
+		<input {placeholder} bind:this={inputElement} bind:value on:focus|stopPropagation={handleFocus} on:blur={handleBlur} on:input={handleChange} />
+		{#if value}
+			<button title="Clear Search" type="button" on:click|stopPropagation={handleClear}>
+				<XIcon size="18" />
+			</button>
+		{/if}
+	</form>
+
+	{#if !overlayVisible && isFocused && isAutocompleted}
+		<div class="suggestions" transition:fly={{y: -20, duration: 400}}>
+			{#each autocompleteData as item}
+				<ListItem title={item.text} href={item.url} image={item.image} />
+			{/each}
+		</div>
+	{/if}
+</div>
+
+{#if overlayVisible}
+	<SearchOverlay on:close={() => (overlayVisible = false)} on:search {placeholder} {value} {autocomplete} />
+{/if}
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
 	.nox-search-bar {
 		width: 100%;
 		color: $gray-700;
-		transition: background $cubic-ease, width $cubic-ease;
+		transition:
+			background $cubic-ease,
+			width $cubic-ease;
 		position: relative;
+		background: #fff;
+		border-radius: 8px;
+		border: 1px solid $gray-400;
 
-		.search-wrapper {
-			background: #fff;
-			border-radius: 8px;
-			border: 1px solid $gray-400;
-		}
-
-		&.focused {
-			&.autocompleted .search-wrapper {
-				border-bottom-right-radius: 0;
-				border-bottom-left-radius: 0;
-			}
+		&.focused.autocompleted {
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
 		}
 
 		&.stretch {
@@ -72,11 +104,8 @@
 		form {
 			display: flex;
 			button {
-				width: 44px;
 				padding: 13px;
-				flex-shrink: 0;
 			}
-
 			input {
 				width: 100%;
 				background: none;
@@ -86,7 +115,6 @@
 
 		&.tiny form {
 			button {
-				width: 36px;
 				padding: 9px;
 			}
 			input {
@@ -96,7 +124,6 @@
 
 		&.big form {
 			button {
-				width: 60px;
 				padding: 18px;
 			}
 			input {
@@ -129,40 +156,3 @@
 		}
 	}
 </style>
-
-<svelte:window bind:innerWidth={screenWidth} />
-
-<div
-	class="nox-search-bar"
-	class:focused={isFocused}
-	class:autocompleted={isAutocompleted}
-	class:stretch
-	class:tiny={size === 'tiny'}
-	class:big={size === 'big'}
->
-	<div class="search-wrapper">
-		<form on:submit|preventDefault={handleSubmit}>
-			<button type="submit" title={placeholder}>
-				<SearchIcon />
-			</button>
-			<input {placeholder} bind:this={inputElement} bind:value on:focus|stopPropagation={handleFocus} on:blur={handleBlur} on:input={handleChange} />
-			{#if value}
-				<button title="Clear Search" type="button" on:click|stopPropagation={handleClear}>
-					<XIcon />
-				</button>
-			{/if}
-		</form>
-
-		{#if !overlayVisible && isFocused && isAutocompleted}
-			<div class="suggestions" transition:fly={{y: -20, duration: 400}}>
-				{#each autocompleteData as item}
-					<ListItem title={item.text} href={item.url} image={item.image} />
-				{/each}
-			</div>
-		{/if}
-	</div>
-</div>
-
-{#if overlayVisible}
-	<SearchOverlay on:close={() => (overlayVisible = false)} on:search {placeholder} {value} {autocomplete} />
-{/if}
