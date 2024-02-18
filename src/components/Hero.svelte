@@ -9,6 +9,29 @@
 	export {className as class};
 </script>
 
+<div class="nox-hero {className} {bgColor ? bgColor : ''}" class:bg>
+	{#if bg}
+		<div class="bg-image">
+			{#if overlay}<div class="overlay" />{/if}
+			<div class="desktop">
+				<Image fit="cover" src={bg.desktop || bg.mobile} alt={bg.alt} />
+			</div>
+			<div class="mobile">
+				<Image fit="cover" src={bg.mobile || bg.desktop} alt={bg.alt} />
+			</div>
+		</div>
+	{/if}
+	<div class="container">
+		{#if boxed}
+			<div class="box"><slot /></div>
+		{:else}
+			<slot />
+		{/if}
+
+		<slot name="content" />
+	</div>
+</div>
+
 <style lang="scss" global>
 	@import '../assets/variables';
 
@@ -82,11 +105,6 @@
 			margin-bottom: 10px;
 		}
 
-		p {
-			line-height: 1.5em;
-			margin-bottom: 20px;
-		}
-
 		.container {
 			position: relative;
 		}
@@ -108,26 +126,3 @@
 		}
 	}
 </style>
-
-<div class="nox-hero {className} {bgColor ? bgColor : ''}" class:bg>
-	{#if bg}
-		<div class="bg-image">
-			{#if overlay}<div class="overlay" />{/if}
-			<div class="desktop">
-				<Image fit="cover" src={bg.desktop || bg.mobile} alt={bg.alt} />
-			</div>
-			<div class="mobile">
-				<Image fit="cover" src={bg.mobile || bg.desktop} alt={bg.alt} />
-			</div>
-		</div>
-	{/if}
-	<div class="container">
-		{#if boxed}
-			<div class="box"><slot /></div>
-		{:else}
-			<slot />
-		{/if}
-
-		<slot name="content" />
-	</div>
-</div>
