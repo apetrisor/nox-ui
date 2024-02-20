@@ -2,6 +2,7 @@
 	export let title = '';
 	export let description = '';
 	export let url = '';
+	export let domain = '';
 	export let pagination = null;
 	export let queryString = '';
 
@@ -33,18 +34,18 @@
 
 	{#if url}
 		{#if !pagination}
-			<link rel="canonical" href={url} />
-			<meta property="og:url" content={url} />
+			<link rel="canonical" href="{domain}{url}" />
+			<meta property="og:url" content="{domain}{url}" />
 		{:else if pagination.page === 1}
-			<link rel="canonical" href="{url}?p=1{queryString}" />
-			<meta property="og:url" content="{url}?p=1{queryString}" />
+			<link rel="canonical" href="{domain}{url}?p=1{queryString}" />
+			<meta property="og:url" content="{domain}{url}?p=1{queryString}" />
 		{/if}
 	{/if}
 
 	{#if pagination && pagination.prev}
-		<link rel="prev" href="{url}?p={pagination.prev}{queryString}" />
+		<link rel="prev" href="{domain}{url}?p={pagination.prev}{queryString}" />
 	{/if}
 	{#if pagination && pagination.next}
-		<link rel="next" href="{url}?p={pagination.next}{queryString}" />
+		<link rel="next" href="{domain}{url}?p={pagination.next}{queryString}" />
 	{/if}
 </svelte:head>
