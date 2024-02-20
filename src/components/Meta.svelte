@@ -11,6 +11,8 @@
 	export let ogDescription = description;
 	export let image = '';
 
+	export let translations;
+
 	$: if (pagination && pagination.page > 1) {
 		title += ` - Page ${pagination.page}`;
 		description = `Page ${pagination.page} of ${pagination.pages} - ${description}`;
@@ -47,5 +49,11 @@
 	{/if}
 	{#if pagination && pagination.next}
 		<link rel="next" href="{domain}{url}?p={pagination.next}{queryString}" />
+	{/if}
+
+	{#if translations && translations.length}
+		{#each translations as {url, lang} (url)}
+			<link rel="alternate" href="{domain}{url}" hreflang={lang} />
+		{/each}
 	{/if}
 </svelte:head>
