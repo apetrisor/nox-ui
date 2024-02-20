@@ -2,13 +2,19 @@
 	export let title = '';
 	export let description = '';
 	export let url = '';
-	export let pagination = false;
-	export let image = false;
+	export let pagination = null;
 	export let queryString = '';
+
+	export let ogType = 'website';
+	export let ogTitle = title;
+	export let ogDescription = description;
+	export let image = '';
 
 	$: if (pagination && pagination.page > 1) {
 		title += ` - Page ${pagination.page}`;
 		description = `Page ${pagination.page} of ${pagination.pages} - ${description}`;
+		ogTitle += ` - Page ${pagination.page}`;
+		ogDescription = `Page ${pagination.page} of ${pagination.pages} - ${ogDescription}`;
 	}
 	$: if (queryString) queryString = '&' + encodeURI(queryString);
 </script>
@@ -17,9 +23,9 @@
 	<title>{title}</title>
 	<meta name="description" content={description} />
 
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={description} />
+	<meta property="og:type" content={ogType} />
+	<meta property="og:title" content={ogTitle} />
+	<meta property="og:description" content={ogDescription} />
 
 	{#if image}
 		<meta property="og:image" content={image} />
