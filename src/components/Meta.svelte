@@ -5,6 +5,8 @@
 	export let domain = '';
 	export let pagination = null;
 	export let queryString = '';
+	export let pageNo = `Page ${pagination?.page}`;
+	export let pageRange = `Page ${pagination?.page} of ${pagination?.pages}`;
 
 	export let ogType = 'website';
 	export let ogTitle = title;
@@ -14,10 +16,10 @@
 	export let translations;
 
 	$: if (pagination && pagination.page > 1) {
-		title += ` - Page ${pagination.page}`;
-		description = `Page ${pagination.page} of ${pagination.pages} - ${description}`;
-		ogTitle += ` - Page ${pagination.page}`;
-		ogDescription = `Page ${pagination.page} of ${pagination.pages} - ${ogDescription}`;
+		title = `${title} - ${pageNo}`;
+		description = `${pageRange} - ${description}`;
+		ogTitle += `${ogTitle} - ${pageNo}`;
+		ogDescription = `${pageRange} - ${ogDescription}`;
 	}
 	$: if (queryString) queryString = '&' + encodeURI(queryString);
 </script>
