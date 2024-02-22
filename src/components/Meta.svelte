@@ -14,9 +14,12 @@
 	export let image = '';
 
 	export let translations; // for rel="alternate"
+	export let schema; // JSON-LD schema, can be an array of multiple JSONs
 
 	// Prepare queryString
 	$: qs = queryString && '&' + encodeURI(queryString);
+	// Transform schema into an array if needed
+	$: schemaList = schema && (Array.isArray(schema) ? schema : [schema]);
 </script>
 
 <svelte:head>
@@ -58,6 +61,12 @@
 	{#if translations && translations.length}
 		{#each translations as { url, lang } (url)}
 			<link rel="alternate" href="{domain}{url}" hreflang={lang} />
+		{/each}
+	{/if}
+
+	{#if schemaList}
+		{#each schemaList as item}
+			{@html `<script type="application/ld+json">${JSON.stringify(item)}</script>`}
 		{/each}
 	{/if}
 </svelte:head>
