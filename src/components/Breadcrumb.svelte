@@ -1,18 +1,18 @@
 <script>
 	export let root = '';
 	export let items = [];
-	export let current;
 	let className = '';
 	export {className as class};
 </script>
 
 <div class="nox-breadcrumb {className}">
-	{#each items as item}
-		<a href={`${root}${item.url}`}>{item.title}</a>
+	{#each items as {url, title}, i (title)}
+		{#if i === items.length - 1}
+			<span>{title}</span>
+		{:else}
+			<a href="{root}{url}">{title}</a>
+		{/if}
 	{/each}
-	{#if current}
-		<span>{current}</span>
-	{/if}
 </div>
 
 <style lang="scss" global>
