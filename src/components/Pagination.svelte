@@ -20,8 +20,9 @@
 	};
 
 	const getQuery = page => {
-		searchParams.set('p', page);
-		return searchParams.toString();
+		let sp = new URLSearchParams(searchParams);
+		sp.set('p', page);
+		return sp.toString();
 	};
 
 	$: current = data.page;
