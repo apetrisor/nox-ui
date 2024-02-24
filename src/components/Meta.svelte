@@ -13,8 +13,8 @@
 	export let ogDescription = description;
 	export let image = '';
 
-	export let translations; // for rel="alternate"
-	export let schema; // JSON-LD schema, can be an array of multiple JSONs
+	export let translations = []; // for rel="alternate"
+	export let schema = []; // JSON-LD schema, can be an array of multiple JSONs
 
 	// Prepare queryString
 	$: qs = queryString && '&' + encodeURI(queryString);

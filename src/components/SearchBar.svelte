@@ -7,14 +7,14 @@
 	import {fly} from 'svelte/transition';
 	import {createEventDispatcher} from 'svelte';
 
-	const dispatch = createEventDispatcher();
-
 	export let value = '';
 	export let size = 'normal';
 	export let stretch = false;
 	export let placeholder = 'search';
-	export let autocomplete;
+	export let autocomplete = null;
 	export let overlayBreakpoint = 768;
+
+	const dispatch = createEventDispatcher();
 
 	let inputElement;
 	let screenWidth = 1280;
