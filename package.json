@@ -12,6 +12,7 @@
     "sass": "^1.71.0"
   },
   "dependencies": {
+    "@splidejs/svelte-splide": "^0.2.9",
     "lodash": "^4.17.21",
     "siema": "^1.5.1",
     "svelte-feather-icons": "^4.1.0",
