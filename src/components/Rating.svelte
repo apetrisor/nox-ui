@@ -77,7 +77,7 @@
 </style>
 
 {#if structuredJSON}
-	{@html '<script type="application/ld+json">' + `${JSON.stringify(structuredJSON)}</script>`}
+	{@html `<script type="application/ld+json">${JSON.stringify(structuredJSON)}</script>`}
 {/if}
 
 <div class="nox-rating">

@@ -4,18 +4,17 @@
 	export let title;
 	export let image;
 	export let fit = 'contain';
-	export let prefetch = false;
 	export let full = false;
 </script>
 
 <div class="nox-card" class:full>
-	<a class="image-wrapper" {href} rel={prefetch ? 'prefetch' : ''}>
+	<a class="image-wrapper" {href}>
 		<div class="image">
 			<Image src={image} alt={title} {fit} {...$$restProps} />
 		</div>
 	</a>
 	<div class="meta">
-		<a class="title-wrapper" {href} rel={prefetch ? 'prefetch' : ''}>
+		<a class="title-wrapper" {href}>
 			<div class="title">{title}</div>
 		</a>
 		<slot />
